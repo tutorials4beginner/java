@@ -1,0 +1,565 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>How to Use CardLayout (The Java&trade; Tutorials &gt; 
+            Creating a GUI with JFC/Swing &gt; Laying Out Components Within a Container)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+<script type="text/javascript">
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+    
+</script>
+
+    </head>
+<body onload="load()">
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class=PrintHeaders>
+        <b>Trail:</b> Creating a GUI with JFC/Swing
+        <br><b>Lesson:</b> Laying Out Components Within a Container
+    </div>
+
+    <div id=LeftBar class=LeftBar_shown>
+        <div id=Contents>
+            <div class="linkLESSON"><a href="index.html">Laying Out Components Within a Container</a></div>
+<div class="linkAHEAD"><a href="visual.html">A Visual Guide to Layout Managers</a></div>
+<div class="linkAHEAD"><a href="using.html">Using Layout Managers</a></div>
+<div class="linkAHEAD"><a href="howLayoutWorks.html">How Layout Management Works</a></div>
+<div class="linkAHEAD"><a href="layoutlist.html">How to Use Various Layout Managers</a></div>
+<div class="linkAHEAD"><a href="border.html">How to Use BorderLayout</a></div>
+<div class="linkAHEAD"><a href="box.html">How to Use BoxLayout</a></div>
+<div class="nolinkAHEAD">How to Use CardLayout</div>
+<div class="linkAHEAD"><a href="flow.html">How to Use FlowLayout</a></div>
+<div class="linkAHEAD"><a href="gridbag.html">How to Use GridBagLayout</a></div>
+<div class="linkAHEAD"><a href="grid.html">How to Use GridLayout</a></div>
+<div class="linkAHEAD"><a href="group.html">How to Use GroupLayout</a></div>
+<div class="linkBHEAD"><a href="groupExample.html">A GroupLayout Example</a></div>
+<div class="linkAHEAD"><a href="spring.html">How to Use SpringLayout</a></div>
+<div class="linkAHEAD"><a href="custom.html">Creating a Custom Layout Manager</a></div>
+<div class="linkAHEAD"><a href="none.html">Doing Without a Layout Manager (Absolute Positioning)</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Layout Problems</a></div>
+</div>
+    </div>
+    <div id=MainFlow class=MainFlow_indented>
+            <span id=BreadCrumbs>
+                <a href=../../index.html target=_top>Home Page</a>
+                &gt;
+                <a href=../index.html target=_top>Creating a GUI with JFC/Swing</a>
+                &gt;
+                <a href=index.html target=_top>Laying Out Components Within a Container</a>
+            </span>
+            <div class=NavBit>
+                <a target=_top href=box.html>&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target=_top href=../TOC.html>Trail</a>&nbsp;&bull;&nbsp;<a target=_top href=flow.html>Next&nbsp;&raquo;</a>
+            </div>
+            <div id=PageTitle>How to Use CardLayout</div>
+            <blockquote>
+<blockquote><hr><strong>Note:</strong>&nbsp;This lesson covers writing layout code by hand, which can be challenging. If you are not interested in learning all the details of layout management, you might prefer to use the <code>GroupLayout</code> layout manager combined with a builder tool to lay out your GUI. One such builder tool is the  
+
+<a class="TutorialLink" target="_top" href="../learn/index.html">NetBeans IDE</a>. Otherwise, if you want to code by hand and do not want to use <code>GroupLayout</code>, then <code>GridBagLayout</code> is recommended as the next most flexible and powerful layout manager.
+ 
+
+<hr></blockquote> 
+
+<P>The following figure represents a snapshot of an application that uses the
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/CardLayout.html"><code>CardLayout</code></a> class to switch between two panels.
+
+<p align=center>
+<IMG SRC="../../figures/uiswing/layout/CardLayoutDemo.png" WIDTH="273" HEIGHT="104 " ALT="A snapshot of CardLayoutDemo">
+<IMG SRC="../../figures/uiswing/layout/CardLayoutDemo-2.png" WIDTH="273" HEIGHT="104 " ALT="Another snapshot of CardLayoutDemo">
+<p>
+Click the Launch button
+to run CardLayoutDemo using
+<a class="TutorialLink" target="_top" href="http://java.sun.com/products/javawebstart/index.jsp">Java&trade; Web Start</a>
+(<a href="http://java.sun.com/javase/downloads/index.jsp">download JDK 6</a>).
+Alternatively, to compile and run the example yourself,
+consult the
+<a href="../examples/layout/index.html#CardLayoutDemo">example index</a>.
+<p><center>
+<a href="http://java.sun.com/docs/books/tutorialJWS/uiswing/layout/ex6/CardLayoutDemo.jnlp">
+<img src="../../images/jws-launch-button.png"
+width="88" heigth="23" align="bottom"
+alt="Launches the CardLayoutDemo application"></a></center></p>
+
+
+The complete code of this demo is in the
+<a class="SourceLink" target="_blank" href="../examples/layout/CardLayoutDemoProject/src/layout/CardLayoutDemo.java"><code>CardLayoutDemo.java</code></a> file.
+
+<p>
+The <code>CardLayout</code> class manages two or more components
+(usually <code>JPanel</code> instances)
+that share the same display space.
+When using the <code>CardLayout</code> class,
+let the user choose between the components by using a combo box.
+The <CODE>CardLayoutDemo</CODE> application is an example to illustrate this feature.
+
+<p>
+Another way to accomplish the same task is to use a
+<a class="TutorialLink" target="_top" href="../components/tabbedpane.html">tabbed pane</a>.
+The following picture shows a tabbed pane version of the preceding example:
+
+<p><center><IMG SRC="../../figures/uiswing/layout/TabDemo.png" WIDTH="378" HEIGHT="97" ALIGN="BOTTOM" ALT="A snapshot of TabDemo"></center></p>
+<p>
+
+Because a tabbed pane provides its own GUI,
+using a tabbed pane is simpler than using the <code>CardLayout</code> class.
+For example, implementing the preceding example 
+using a tabbed pane results in a program with 
+fewer lines of code.
+<P>
+
+Click the Launch button
+to run TabDemo using
+<a class="TutorialLink" target="_top" href="http://java.sun.com/products/javawebstart/index.jsp">Java&trade; Web Start</a>
+(<a href="http://java.sun.com/javase/downloads/index.jsp">download JDK 6</a>).
+Alternatively, to compile and run the example yourself,
+consult the
+<a href="../examples/layout/index.html#TabDemo">example index</a>.
+<p><center>
+<a href="http://java.sun.com/docs/books/tutorialJWS/uiswing/layout/ex6/TabDemo.jnlp">
+<img src="../../images/jws-launch-button.png"
+width="88" heigth="23" align="bottom"
+alt="Launches the TabDemo application"></a></center></p>
+ 
+The complete code of this demo is in the
+<a class="SourceLink" target="_blank" href="../examples/layout/TabDemoProject/src/layout/TabDemo.java"><code>TabDemo.java</code></a> file.
+
+<p>
+
+Conceptually, each component that a <code>CardLayout</code> manages
+is like a playing card or trading card in a stack,
+where only the top card is visible at any time.
+You can choose the card that is showing
+in any of the following ways:
+<ul>
+<li> By asking for either the first or last card,
+     in the order it was added to the container
+<li> By flipping through the deck backwards or forwards
+<li> By specifying a card with a specific name
+</ul>
+The <CODE>CardLayoutDemo</CODE> class uses the last scheme.
+<p>
+
+The following code snippet from the
+<a class="SourceLink" target="_blank" href="../examples/layout/CardLayoutDemoProject/src/layout/CardLayoutDemo.java"><code>CardLayoutDemo.java</code></a> application creates the <code>CardLayout</code> object
+and the components it manages.
+
+<blockquote><pre>
+<em>//Where instance variables are declared:</em>
+JPanel cards;
+final static String BUTTONPANEL = "Card with JButtons";
+final static String TEXTPANEL = "Card with JTextField";
+
+<em>//Where the components controlled by the CardLayout are initialized:</em>
+//Create the "cards".
+JPanel card1 = new JPanel();
+...
+JPanel card2 = new JPanel();
+...
+
+//Create the panel that contains the "cards".
+cards = new JPanel(new CardLayout());
+cards.add(card1, BUTTONPANEL);
+cards.add(card2, TEXTPANEL);
+</pre></blockquote>
+
+To add a component to a
+container that a <code>CardLayout</code> object manages,
+specify a string that identifies the component being added.
+For example, in this demo, 
+the first panel has the string <code>"Card with JButtons"</code>,
+and the second panel has the string <code>"Card with JTextField"</code>.
+In this demo those strings are also used in the combo box.
+
+<p>
+
+To choose which component a <code>CardLayout</code> object shows,
+put additional code in your code example:
+
+<blockquote><pre>
+<em>//Where the GUI is assembled:</em>
+//Put the JComboBox in a JPanel to get a nicer look.
+JPanel comboBoxPane = new JPanel(); //use FlowLayout
+String comboBoxItems[] = { BUTTONPANEL, TEXTPANEL };
+JComboBox cb = new JComboBox(comboBoxItems);
+cb.setEditable(false);
+cb.addItemListener(this);
+comboBoxPane.add(cb);
+...
+pane.add(comboBoxPane, BorderLayout.PAGE_START);
+pane.add(cards, BorderLayout.CENTER);
+...
+
+//Method came from the ItemListener class implementation,
+//contains functionality to process the combo box item selecting
+public void itemStateChanged(ItemEvent evt) {
+    CardLayout cl = (CardLayout)(cards.getLayout());
+    cl.show(cards, (String)vet.getItem());
+}
+</pre></blockquote>
+
+ 
+
+This example shows that
+to use the <code>show</code> method of the <code>CardLayout</code> 
+class, you must set the currently visible component. 
+The first argument in the <code>show</code> method
+is the container the <code>CardLayout</code> controls &mdash;
+that is, the container of the components the <code>CardLayout</code> manages.
+The second argument is the string
+that identifies the component to show.
+This string is the same string that was used when
+adding the component to the container.
+
+</blockquote>
+<h3>
+<a name="api">The CardLayout API</a>
+</h3>
+<blockquote>
+
+The following table lists the <code>CardLayout</code> class methods that are used to choose a component.
+For each method, the first argument is the container for which the <code>CardLayout</code> is the layout manager
+(the container of the cards the <code>CardLayout</code> controls).
+<P>
+<table border="1">
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/CardLayout.html#first(java.awt.Container)"><CODE>first (Container <em>parent</em>)</CODE></a></td>
+<td>Flips to the first card of the container.</td>
+</tr>
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/CardLayout.html#next(java.awt.Container)"><CODE>next (Container <em>parent</em>)</CODE></a></td>
+<td>Flips to the next card of the container. If the currently visible card is the last one, this method flips to the first card in the layout.</td>
+</tr>
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/CardLayout.html#previous(java.awt.Container)"><CODE>previous (Container <em>parent</em>)</CODE></a></td>
+<td>Flips to the previous card of the container. If the currently visible card is the first one, this method flips to the last card in the layout.</td>
+</tr>
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/CardLayout.html#last(java.awt.Container)"><CODE>last (Container <em>parent</em>)</CODE></a></td>
+<td>Flips to the last card of the container.</td>
+</tr>
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/CardLayout.html#show(java.awt.Container,%20java.lang.String)"><CODE>show (Container <em>parent</em>, String <em>name</em>)</CODE></a></td>
+<td>Flips to the component that was added to this layout with the specified <code>name</code>, using the
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/CardLayout.html#addLayoutComponent(java.awt.Component,%20java.lang.Object)"><CODE>addLayoutComponent</CODE></a> method.</td>
+</tr>
+</table>
+
+</blockquote>
+<h3>
+<a name="eg">Examples that Use CardLayout</a>
+</h3>
+<blockquote>
+
+
+Only one example in this 
+trail
+uses <code>CardLayout</code>, and this is the
+<a href="../examples/layout/index.html#CardLayoutDemo"><code>CardLayoutDemo</code></a>.
+Generally, our examples use 
+<a class="TutorialLink" target="_top" href="../components/tabbedpane.html">tabbed panes</a> instead of <code>CardLayout</code>,
+since a tabbed pane provides its own GUI.
+
+
+        </blockquote>
+        <div class=NavBit>
+            <a target=_top href=box.html>&laquo; Previous</a>
+            &bull;
+            <a target=_top href=../TOC.html>Trail</a>
+            &bull;
+            <a target=_top href=flow.html>Next &raquo;</a>
+        </div>
+    </div>
+    <div id=Footer>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../information/copyright.html">Copyright</a>
+    1995-2007 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    <div class=PrintHeaders>
+        <b>Previous page:</b> How to Use BoxLayout
+        <br><b>Next page:</b> How to Use FlowLayout
+    </div>
+    </body>
+</html> 

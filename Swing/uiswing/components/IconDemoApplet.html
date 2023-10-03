@@ -1,0 +1,292 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>Run IconDemoApplet (The Java&trade; Tutorials &gt; 
+            Creating a GUI with JFC/Swing &gt; Using Swing Components)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+    </head>
+<body>
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                        </div>
+                        <div id=TopBar_left>
+                        </div>
+                    </div> </div> </div> </div> </div>
+
+    <div class=MainFlow_wide>
+    <div class=NavBit><p></div>
+    <div id=PageTitle>Run IconDemoApplet</div>
+        <blockquote>
+<applet code="IconDemoApplet.class"
+        codebase="examples/"
+        archive="iconAppletClasses.jar,iconStartupImages.jar,iconAppletImages.jar"
+	width="400"
+	height="360"
+>
+    <param NAME="IMAGEDIR" VALUE="images">
+
+    <param NAME="IMAGE0" VALUE="stickerface.gif">
+    <param NAME="CAPTION0" VALUE="Sticker Face">
+    <param NAME="WIDTH0" VALUE="230">
+    <param NAME="HEIGHT0" VALUE="238">
+
+    <param NAME="IMAGE1" VALUE="lainesTongue.gif">
+    <param NAME="CAPTION1" VALUE="Study of Laine's Tongue">
+    <param NAME="WIDTH1" VALUE="369">
+    <param NAME="HEIGHT1" VALUE="237">
+
+    <param NAME="IMAGE2" VALUE="kathyCosmo.gif">
+    <param NAME="CAPTION2" VALUE="Kathy & Cosmo">
+    <param NAME="WIDTH2" VALUE="288">
+    <param NAME="HEIGHT2" VALUE="200">
+
+    <param NAME="IMAGE3" VALUE="ewanPumpkin.gif">
+    <param NAME="CAPTION3" VALUE="Ewan Dinkins">
+    <param NAME="WIDTH3" VALUE="278">
+    <param NAME="HEIGHT3" VALUE="237">
+
+    <param NAME="IMAGE4" VALUE="malmau.gif">
+    <param NAME="CAPTION4" VALUE="A girl and her cat">
+    <param NAME="WIDTH4" VALUE="319">
+    <param NAME="HEIGHT4" VALUE="210">
+
+</applet>
+
+<blockquote><hr><strong>Note:</strong> If you don't see the applet running above, you need to install Java Plug-in, which happens automatically when you <a href="http://java.sun.com/j2se/downloads.html" target="_blank">install the J2SE JRE or SDK</a>. We strongly recommend that you install the latest version; at least 1.3.1 is required for all our applets. You can find more information in the <a href="http://java.sun.com/products/plugin" target="_blank">Java Plug-in home page.</a><hr></blockquote>
+        </blockquote>
+    </div>
+    <div id=Footer>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../information/copyright.html">Copyright</a>
+    1995-2006 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    </body>
+</html> 

@@ -1,0 +1,440 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>Example Six: <code>VoteDialog</code> (The Java&trade; Tutorials &gt; 
+            Creating a GUI with JFC/Swing &gt; Learning Swing by Example)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+<script type="text/javascript">
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+    
+</script>
+
+    </head>
+<body onload="load()">
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class=PrintHeaders>
+        <b>Trail:</b> Creating a GUI with JFC/Swing
+        <br><b>Lesson:</b> Learning Swing by Example
+    </div>
+
+    <div id=LeftBar class=LeftBar_shown>
+        <div id=Contents>
+            <div class="linkLESSON"><a href="index.html">Learning Swing by Example</a></div>
+<div class="linkAHEAD"><a href="example1.html">Example One: Your First Swing Program</a></div>
+<div class="linkAHEAD"><a href="example2.html">Example Two: <code>SwingApplication</code></a></div>
+<div class="linkAHEAD"><a href="example3.html">Example Three: <code>CelsiusConverter</code></a></div>
+<div class="linkAHEAD"><a href="example4.html">Example Four: An Improved <code>CelsiusConverter</code></a></div>
+<div class="linkAHEAD"><a href="example5.html">Example Five: <code>LunarPhases</code></a></div>
+<div class="nolinkAHEAD">Example Six: <code>VoteDialog</code></div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+</div>
+    </div>
+    <div id=MainFlow class=MainFlow_indented>
+            <span id=BreadCrumbs>
+                <a href=../../index.html target=_top>Home Page</a>
+                &gt;
+                <a href=../index.html target=_top>Creating a GUI with JFC/Swing</a>
+                &gt;
+                <a href=index.html target=_top>Learning Swing by Example</a>
+            </span>
+            <div class=NavBit>
+                <a target=_top href=example5.html>&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target=_top href=../TOC.html>Trail</a>&nbsp;&bull;&nbsp;<a target=_top href=summary.html>Next&nbsp;&raquo;</a>
+            </div>
+            <div id=PageTitle>Example Six: <code>VoteDialog</code></div>
+            <blockquote>
+<!--Learn by Example-->
+<!--Example Six: VoteDialog-->
+
+Topics covered in this example include:
+<ul>
+  <li><A HREF="#radiobuttons">Radio Buttons</A>
+  <li><A HREF="#dialogs">Dialogs</A>
+</ul>
+
+The last example in this lesson is 
+<a class="SourceLink" target="_blank" href="examples/VoteDialog.java"><code>VoteDialog</code></a>. 
+It illustrates the use of dialogs and radio buttons. 
+
+<P>
+In <code>VoteDialog</code>, the user casts a vote by selecting a radio 
+button and clicking the <B>Vote</B> button. After the button is 
+clicked, a dialog appears with an informational message or 
+a follow-up question.  
+
+<P>
+Here's a picture of the <code>VoteDialog</code> application:
+<p><center><IMG SRC="../../figures/uiswing/learn/15VoteDialog.gif" WIDTH="347" HEIGHT="248" ALIGN="BOTTOM" ALT="The VoteDialog application."></center></p>
+</BLOCKQUOTE>
+<A NAME="radiobuttons"></A>
+<H3>Radio Buttons</H3>
+<BLOCKQUOTE>
+
+The <code>VoteDialog</code> application has one action listener that listens to clicks on the top-level container’s button. Each time the action listener receives an event, the application determines which radio button was selected and displays the appropriate dialog.
+
+<P> 
+For each group of radio buttons, you need to create a <code>ButtonGroup</code> instance and add each radio button to it. <code>ButtonGroup</code> takes care of unselecting the previously selected button when the user selects another one in the group. You should generally initialize a group of radio buttons so that one is selected. However, the API doesn’t enforce this rule: A group of radio buttons can have no initial selection. Once the user has made a selection, exactly one button is selected from then on. 
+
+<P>
+Here’s the code from 
+<a class="SourceLink" target="_blank" href="examples/VoteDialog.java"><code>VoteDialog.java</code></a> that creates the radio buttons and the <code>ButtonGroup</code> instance that controls them. The <code>setActionCommand</code> method associates a specific dialog with each radio button item. We use the <code>setSelected</code> method to specify the default selected radio button.
+
+<blockquote><pre>
+final int numButtons = 4;
+JRadioButton[] radioButtons = new JRadioButton[numButtons];
+
+final ButtonGroup group = new ButtonGroup();
+...
+
+final String defaultMessageCommand = "default";
+final String yesNoCommand = "yesno";
+final String yeahNahCommand = "yeahnah";
+final String yncCommand = "ync";
+
+radioButtons[0] = new JRadioButton("&lt;html&gt;Candidate 1: 
+      &lt;font color=red&gt;Sparky the Dog&lt;/font&gt;&lt;/html&gt;");
+radioButtons[0].setActionCommand(defaultMessageCommand);
+
+radioButtons[1] = new JRadioButton("&lt;html&gt;Candidate 2: 
+      &lt;font color=green&gt;Shady Sadie&lt;/font&gt;&lt;/html&gt;");
+radioButtons[1].setActionCommand(yesNoCommand);
+
+radioButtons[2] = new JRadioButton("&lt;html&gt;Candidate 3: 
+      &lt;font color=blue&gt;R.I.P. McDaniels&lt;/font&gt;&lt;/html&gt;");
+radioButtons[2].setActionCommand(yeahNahCommand);
+
+radioButtons[3] = new JRadioButton("&lt;html&gt;Candidate 4: 
+      &lt;font color=maroon&gt;Duke the Java&lt;font size=-2&gt;&lt;sup&gt;TM&lt;/sup&gt;
+      &lt;/font size&gt; Platform Mascot&lt;/font&gt;&lt;/html&gt;");
+radioButtons[3].setActionCommand(yncCommand);
+
+for (int i = 0; i &lt; numButtons; i++) {
+    group.add(radioButtons[i]);
+}
+
+//Select the first button by default.
+radioButtons[0].setSelected(true);
+</pre></blockquote>
+
+Note the use of HTML code on the radio buttons, which lets us specify multiple text colors within each button.
+
+
+
+</BLOCKQUOTE>
+<A NAME="dialogs"></A>
+<H3>Dialogs</H3>
+
+<BLOCKQUOTE>
+In our previous examples, our top-level container has always 
+been a <code>JFrame</code>. Another kind of top-level container is a <I>dialog</I>--a window that is more limited than a frame. To create simple, standard dialogs, you use the 
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/javax/swing/JOptionPane.html"><code>JOptionPane</code></a> class. The dialogs that <code>JOptionPane</code> provides are modal. When a modal dialog is visible, it blocks user input to all other windows in the program. 
+<P>
+The code for simple dialogs can be minimal. For example, the following figure shows an informational dialog. Here’s the code that creates and shows it:
+
+<blockquote><pre>
+JOptionPane.showMessageDialog(frame, "There's no \"there\" there.");
+</pre></blockquote>
+
+<p><center><IMG SRC="../../figures/uiswing/learn/16NoThere.gif" WIDTH="272" HEIGHT="123" ALIGN="BOTTOM" ALT="A simple dialog."></center></p>
+Every dialog is dependent on a frame. When that frame is destroyed, so are its dependent dialogs. When the frame is iconified, its dependent dialogs disappear from the screen. When the frame is deiconified, its dependent dialogs return to the screen. The AWT automatically provides this behavior. You can get more information on dialogs in 
+ 
+<a class="TutorialLink" target="_top" href="../components/dialog.html">How to Make Dialogs</a>.
+
+
+<p>
+        </blockquote>
+        <div class=NavBit>
+            <a target=_top href=example5.html>&laquo; Previous</a>
+            &bull;
+            <a target=_top href=../TOC.html>Trail</a>
+            &bull;
+            <a target=_top href=summary.html>Next &raquo;</a>
+        </div>
+    </div>
+    <div id=Footer>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../information/copyright.html">Copyright</a>
+    1995-2006 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    <div class=PrintHeaders>
+        <b>Previous page:</b> Example Five: <code>LunarPhases</code>
+        <br><b>Next page:</b> Summary
+    </div>
+    </body>
+</html> 

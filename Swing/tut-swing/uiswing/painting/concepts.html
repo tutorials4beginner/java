@@ -1,0 +1,673 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>How Swing Components Are Displayed (The Java&trade; Tutorials &gt; 
+            Creating a GUI with JFC/Swing &gt; Performing Custom Painting)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+<script type="text/javascript">
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+    
+</script>
+
+    </head>
+<body onload="load()">
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class=PrintHeaders>
+        <b>Trail:</b> Creating a GUI with JFC/Swing
+        <br><b>Lesson:</b> Performing Custom Painting
+    </div>
+
+    <div id=LeftBar class=LeftBar_shown>
+        <div id=Contents>
+            <div class="linkLESSON"><a href="index.html">Performing Custom Painting</a></div>
+<div class="nolinkAHEAD">How Swing Components Are Displayed</div>
+<div class="linkAHEAD"><a href="concepts2.html">Introduction to Painting Concepts</a></div>
+<div class="linkAHEAD"><a href="practice.html">Implementing a Custom Component</a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Painting Problems</a></div>
+</div>
+    </div>
+    <div id=MainFlow class=MainFlow_indented>
+            <span id=BreadCrumbs>
+                <a href=../../index.html target=_top>Home Page</a>
+                &gt;
+                <a href=../index.html target=_top>Creating a GUI with JFC/Swing</a>
+                &gt;
+                <a href=index.html target=_top>Performing Custom Painting</a>
+            </span>
+            <div class=NavBit>
+                <a target=_top href=index.html>&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target=_top href=../TOC.html>Trail</a>&nbsp;&bull;&nbsp;<a target=_top href=concepts2.html>Next&nbsp;&raquo;</a>
+            </div>
+            <div id=PageTitle>How Swing Components Are Displayed</div>
+            <blockquote>
+If you plan to create custom painting code for a component, 
+this section is required reading.
+Understanding the concepts in this section
+might also help you troubleshoot
+if Swing components don't seem
+to be displayed correctly.
+
+
+</blockquote>
+<h3>
+<a name="howitworks">How Painting Happens</a>
+</h3>
+<blockquote>
+
+When a Swing GUI needs to paint itself &#151;
+whether for the first time,
+in response to becoming unhidden,
+or because it needs to reflect
+a change in the program's state &#151;
+it starts with the highest component that needs to be repainted
+and works its way down the containment hierarchy.
+This process is orchestrated by the AWT painting system,
+and made more efficient and smooth by the Swing repaint manager
+and double-buffering code.
+
+<p>
+
+Swing components generally repaint themselves
+whenever necessary.
+When you invoke the <code>setText</code> method on a component,
+for example,
+the component automatically repaints itself
+and, if appropriate, resizes itself.
+Behind the scenes, 
+when a visible property changes
+the <code><b>repaint</b></code> method is invoked on the component
+to request that it be scheduled for painting.
+If the component's size or position also needs to change,
+a call to <code><b>revalidate</b></code>
+precedes the one to <code>repaint</code>.
+The <code>repaint</code> and <code>revalidate</code>
+methods are thread safe &#151;
+they can be invoked from any thread.
+
+<blockquote><hr><strong>Note:</strong>&nbsp;Like event-handling code,
+painting code
+executes on the event-dispatching thread.
+While an event is being handled,
+no painting will occur.
+Similarly, if a painting operation takes a long time,
+no events will be handled during that time.
+<hr></blockquote>
+
+<p>
+
+Programs should paint only when the painting system tells them to
+because each occurrence of a component painting itself
+must execute without interruption.
+Otherwise, unpredictable results could occur,
+such as a button being painted as half pressed
+and half unpressed.
+
+<p>
+
+For smoothness, Swing painting is <em>double-buffered</em> 
+by default &#151;
+performed to an offscreen buffer 
+and then flushed to the screen once finished.
+You can improve painting performance
+by making components opaque when possible,
+so that the Swing painting system 
+doesn't waste time trying to paint behind these components.
+To make a Swing component opaque,
+invoke <code>setOpaque(true)</code> on the component.
+
+<p>
+
+Although the painting area available to Swing components
+is always rectangular,
+non-opaque Swing components can appear to be any shape.
+A button, for instance, might display itself
+by painting a filled octagon.
+The component behind the button 
+(its container, most likely) 
+would then be visible,
+showing through at the corners of the button's bounds.
+The button would have to include
+special hit detection code
+to avoid acting pressed
+if the user happens to click its corners.
+
+
+</blockquote>
+<h3>
+<a name="methods">The Swing Painting Methods</a>
+</h3>
+<blockquote>
+
+The painting method you're most likely to override is
+<code>paintComponent</code>.
+It's one of three methods
+that <code>JComponent</code> objects use to paint themselves.
+The three methods are invoked in this order:
+
+<ol>
+<li> <code>paintComponent</code>
+ &#151;  The main method for painting.
+     By default, it first paints the background if 
+     the component is opaque.
+     Then it performs any custom painting.
+<li> <code>paintBorder</code>
+ &#151;  Tells the component's border (if any) 
+     to paint.
+     <em>Do not invoke or override this method.</em>
+<li> <code>paintChildren</code>
+ &#151;  Tells any components contained by this component
+     to paint themselves.
+     <em>Do not invoke or override this method.</em>
+</dl>
+
+<blockquote><hr><strong>Note:</strong>&nbsp;
+We recommend that you don't override or invoke
+the method that calls the <code>paint<em>Xxx</em></code> methods:
+the <code>paint</code> method.
+Although overriding <code>paint</code> is legitimate in
+non-Swing components,
+it's generally not a good thing to do in components that descend from
+<code>JComponent</code>.
+Overriding <code>paint</code> can
+confuse the painting system,
+which relies on the <code>JComponent</code> implementation of
+the <code>paint</code> method
+for correct painting,
+performance enhancements,
+and features such as double buffering.
+<hr></blockquote>
+
+<p>
+The following figure illustrates
+the order in which each component
+that inherits from <code>JComponent</code>
+paints itself.
+Steps 1 and 2 &#151;
+painting the background and performing custom painting &#151;
+are performed by the <code>paintComponent</code> method.
+Step 3 is performed by <code>paintBorder</code>,
+and step 4 is performed by <code>paintChildren</code>
+
+<blockquote>
+<table>
+<tr valign=top>
+<th> 1. background
+<br>
+(if opaque)
+</th>
+<th> 2. custom 
+<br>painting
+<br>
+(if any)
+</th>
+<th> 3. border
+<br>
+(if any)
+</th>
+<th> 4. children
+<br>
+(if any)
+
+</th>
+</tr>
+<tr>
+<td>
+<p><center><IMG SRC="../../figures/uiswing/painting/5aorder.gif" WIDTH="116" HEIGHT="138" ALIGN="BOTTOM" ALT="background"></center></p>
+</td>
+<td>
+<p><center><IMG SRC="../../figures/uiswing/painting/5border.gif" WIDTH="116" HEIGHT="138" ALIGN="BOTTOM" ALT="custom painting"></center></p>
+</td>
+<td>
+<p><center><IMG SRC="../../figures/uiswing/painting/5corder.gif" WIDTH="116" HEIGHT="138" ALIGN="BOTTOM" ALT="border"></center></p>
+</td>
+<td>
+<p><center><IMG SRC="../../figures/uiswing/painting/5dorder.gif" WIDTH="116" HEIGHT="138" ALIGN="BOTTOM" ALT="children"></center></p>
+</td>
+</tr>
+</table>
+</blockquote>
+[PENDING: We will change the figures
+so that green areas in 1 & 2 are a bit bigger --
+they should cover the same area as is covered by the black
+and green areas combined in 3 & 4.]
+
+<p>
+
+The standard Swing components delegate their look-and-feel-specific painting to
+an object called a <em>UI delegate</em>.
+When such a component's <code>paintComponent</code> method is called,
+the method asks the UI delegate to paint the component.  
+Generally, the UI delegate first checks whether the component
+is opaque and, if so,
+paints the entire background of the component.
+Then the UI delegate performs any look-and-feel-specific painting.
+The <code>JComponent</code> class 
+doesn't set up a UI delegate &#151;
+only its subclasses do.
+This means that if you extend <code>JComponent</code>,
+your component needs to paint its own background
+if it's opaque.
+
+<p>
+If you need more information about painting, see 
+<a href="http://java.sun.com/products/jfc/tsc/articles/painting/index.html">Painting in AWT and Swing</a>.
+It's an article in 
+<a href="http://java.sun.com/products/jfc/tsc/index.html"><em>The Swing Connection</em></a>
+that discusses in depth the intricacies of painting.
+
+
+</blockquote>
+<h3>
+<a name="example">An Example of Painting</a>
+</h3>
+<blockquote>
+
+To illustrate painting, we'll use the <code>SwingApplication</code> program.
+Here is its GUI:
+
+<p><center><IMG SRC="../../figures/uiswing/painting/SwingApplication.gif" WIDTH="268 " HEIGHT="119" ALIGN="BOTTOM" ALT="SwingApplication's GUI"></center></p>[PENDING: this snapshot will be updated]
+
+<p>
+Here is its containment hierarchy:
+
+<p><center><IMG SRC="../../figures/uiswing/painting/1jframehier.gif" WIDTH="263" HEIGHT="179" ALIGN="BOTTOM" ALT="JFrame Hierarchy"></center></p>
+<P>
+When the GUI for <code>SwingApplication</code> is painted,
+here's what happens:
+<ol>
+<li> The top-level container, <code>JFrame</code>, paints itself.
+<li> The content pane first paints its background,
+     which is a solid gray rectangle.
+     It then tells the <code>JPanel</code> to paint itself.
+     In most look and feels, 
+     the <code>JPanel</code> is opaque by default
+     and the content pane's background rectangle doesn't 
+     actually appear in the finished GUI,
+     being completely obscured by the
+     <code>JPanel</code>.
+
+     <hr>
+     <strong>Note:</strong>
+     It's important that the content pane be opaque.
+     Otherwise, messy repaints will result.
+     We could invoke <code>setOpaque(true)</code>
+     on the <code>JPanel</code> 
+     and then make it the content pane.
+     This would slightly simplify the containment hierarchy and painting 
+     by removing an unnecessary container.
+     <hr>
+<li> In most look and feels, the <code>JPanel</code> is opaque
+     and the first painting it does fills its background.
+     Next, it paints its border.
+     The border is an <code>EmptyBorder</code>,
+     which has no effect except for
+     increasing the <code>JPanel</code>'s size
+     by reserving some space at the edge of the panel.
+     Finally, the panel asks its children to paint themselves.
+<li> To paint itself, the <code>JButton</code> paints
+     its background rectangle,
+     if necessary, then
+     the text that the button contains,
+     and then its border.
+     If the button has the keyboard focus, 
+     meaning that any typing goes directly to the button
+     for processing,
+     the button does some look-and-feel-specific
+     painting to make clear that it has the focus.
+<li> To paint itself, the <code>JLabel</code> paints its text.
+</ol>
+
+In this way, each component paints itself
+before any of the components it contains.
+This ensures that the background of a <code>JPanel</code>,
+for example, 
+is visible only where it isn't covered by 
+painting performed by one of the components it contains.
+
+
+</blockquote>
+<h3>
+<a name="example2">Repainting Transparent Components</a>
+</h3>
+<blockquote>
+
+When a transparent (non-opaque) component gets a request to repaint itself,
+one or more components underneath the transparent component
+must also repaint themselves.
+For example, assume you set the text on an ordinary label
+that's already visible.
+In most look and feels, 
+the <em>opaque</em> property of labels is <code>false</code>,
+so that labels are transparent.
+When a transparent label's text changes,
+not only must the label paint itself,
+but all components that can be seen behind the label
+must also paint themselves.
+This painting frenzy is kicked off
+when the label's <code>setText</code> method
+invokes <code>repaint</code>.
+
+<p>
+Here is the sequence of painting when 
+<code>repaint</code> is invoked on a <code>JComponent</code> such as a label
+that is both visible and non-opaque.
+
+<ol>
+<li> Code inherited from <code>JComponent</code>
+     causes the non-opaque component
+     to look through its containment hierarchy
+     to find the closest containing component that's completely opaque.
+     For example, if the transparent component 
+     is a label in a transparent panel
+     in a content pane,
+     then the label's closest opaque container is the content pane.
+<li> The opaque container paints itself.
+<li> The children of the opaque container are asked to paint themselves.
+     Eventually, the transparent component is painted.
+</ol>
+
+You can see from this sequence that 
+painting transparent components
+is more costly than painting opaque components.
+That's why we encourage you to set 
+components' <em>opaque</em>
+property to <code>true</code> whenever practical.
+
+</blockquote>
+        </blockquote>
+        <div class=NavBit>
+            <a target=_top href=index.html>&laquo; Previous</a>
+            &bull;
+            <a target=_top href=../TOC.html>Trail</a>
+            &bull;
+            <a target=_top href=concepts2.html>Next &raquo;</a>
+        </div>
+    </div>
+    <div id=Footer>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../information/copyright.html">Copyright</a>
+    1995-2006 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    <div class=PrintHeaders>
+        <b>Previous page:</b> Performing Custom Painting
+        <br><b>Next page:</b> Introduction to Painting Concepts
+    </div>
+    </body>
+</html> 

@@ -1,0 +1,28 @@
+README:
+fileDemo.jar is a signed jar file, for security reasons.
+
+First, the key "latte" was created like this:
+
+% keytool -alias latte -genkey
+
+I entered info requested for key creation and
+selected a password.  The password is: creamy.
+
+To review a summary of the new key, use:
+
+% keytool -list -v
+
+The jar is signed with this command:
+
+% jarsigner fileDemo.jar latte
+
+and you enter the password "creamy".
+
+Whenever the jar file is regenerated, it needs
+to be signed again using jarsigner.
+
+
+Note:  When I did a "which", both jarsigner
+and keytool are located in /usr/bin/.
+
+Sharon

@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>Answers to Questions and Exercises: Basic I/O (The Java&trade; Tutorials &gt; Essential Classes &gt;
+            Basic I/O)</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+    </head>
+<body>
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                        </div>
+                            <div class=PrintHeaders>
+                                <b>Trail:</b> Essential Classes
+                                <br><b>Lesson:</b> Basic I/O
+                            </div>
+                    </div> </div> </div> </div> </div>
+
+    <div class=MainFlow_wide>
+        <span id=BreadCrumbs>
+            <a href=../../../index.html target=_top>Home Page</a>
+            &gt;
+            <a href=../../index.html target=_top>Essential Classes</a>
+            &gt;
+            <a href=../index.html target=_top>Basic I/O</a>
+        </span>
+        <div class=NavBit>
+            <a href=../QandE/questions.html>&laquo; Previous</a>&nbsp;&bull;&nbsp;<a href=../../TOC.html>TOC</a>
+        </div>
+        <div id=PageTitle>Answers to Questions and Exercises: Basic I/O</div>
+        <blockquote>
+</BLOCKQUOTE>
+<H3>Questions</H3>
+
+<BLOCKQUOTE>
+  <P><font color="red"> Question 1.</font> What class would you use to read a few pieces of data that
+  are at known positions near the end of a large file?
+  
+  <BR><font color="green"> Answer 1.</font>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/io/RandomAccessFile.html"><code>RandomAccessFile</code></a>.
+
+    <P><font color="red"> Question 2.</font>In a <code>format</code>
+    call, what's the best way to indicate a new line?
+    <BR><font color="green"> Answer 2.</font>
+    Use the <code>%n</code> conversion &mdash; the <code>\n</code>
+    escape is not platform independent!
+
+
+  <P><font color="red"> Question 3.</font> How would you append data to the end of a file? Show the
+  constructor for the class you would use and explain your answer.
+  <BR><font color="green"> Answer 3.</font> 
+Here's a quick answer:
+  Use the 
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/io/FileWriter.html"><CODE>FileWriter</CODE></a>  and 
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/io/BufferedWriter.html"><CODE>BufferedWriter</CODE></a>  classes to append data to the end of the text file. Here is the
+  <CODE>FileWriter</CODE> constructor, you pass in <CODE>true</CODE>
+  to write to the file in append mode:</P>
+
+<blockquote><pre>
+FileWriter writer = new FileWriter (String filename, boolean append);
+</pre></blockquote>
+
+
+An alternate answer is to use 
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/io/RandomAccessFile.html"><code>RandomAccessFile</code></a>  and skip to the end of the file and start writing:</P>
+<blockquote><pre>
+...
+RandomAccessFile file = new RandomAccessFile(datafile, "rw");
+file.skipBytes((int)file.length()); //skip to the end of the file
+file.writeBytes("Add this text to the end of datafile"); //write at the end of the file
+file.close();
+...
+</pre></blockquote>
+<br>
+
+</BLOCKQUOTE>
+
+  <BR>
+<H3>Exercises</H3>
+
+<BLOCKQUOTE>
+
+
+   <P><font color="red"> Exercise 1.</font> Implement a pair of classes, one <CODE>Reader</CODE> and
+ one <CODE>Writer</CODE>, that count the number of times a particular
+ character, such as <CODE>e</CODE>, is read or written. The character
+ can be specified when the stream is created. Write a program
+ to test your classes. You can use 
+<a class="SourceLink" target="_blank" href="../examples/xanadu.txt"><code>xanadu.txt</code></a> as the input file.
+  <BR><font color="green"> Answer 1.</font> See the following three files: 
+<a class="SourceLink" target="_blank" href="../examples/CounterDemo.java"><code>CounterDemo.java</code></a>, 
+<a class="SourceLink" target="_blank" href="../examples/CountReader.java"><code>CountReader.java</code></a>, and 
+<a class="SourceLink" target="_blank" href="../examples/CountWriter.java"><code>CountWriter.java</code></a>.
+
+
+    <P><font color="red"> Exercise 2.</font> The file 
+<a class="SourceLink" target="_blank" href="datafile"><code>datafile</code></a> begins with a single <CODE>long</CODE> that tells you the offset
+ of a single <code>int</code> piece of data within the same file. Using the
+ <CODE>RandomAccessFile</CODE> class, write a program that gets
+ the <code>int<code> piece of data. What is the <CODE>int</CODE> data?
+  <BR><font color="green"> Answer 2.</font>
+<code>123</code>. See 
+<a class="SourceLink" target="_blank" href="FileReader.java"><code>FileReader.java</code></a> for the solution. If you're interested in seeing how the file
+ was written, see 
+<a class="SourceLink" target="_blank" href="FileWriter.java"><code>FileWriter.java</code></a>.</P>
+ 
+
+  </BLOCKQUOTE>
+</BLOCKQUOTE>
+<BR>
+<P>
+
+        </blockquote>
+    </div>
+    <div id=Footer>
+        <span class=NavBit>
+            <a href=../QandE/questions.html>&laquo; Previous</a>
+            &bull;
+            <a href=../../TOC.html>TOC</a>
+        </span>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../../information/copyright.html">Copyright</a>
+    1995-2006 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    <div class=PrintHeaders>
+        <b>Previous page:</b> Questions and Exercises: Basic I/O
+    </div>
+    </body>
+</html> 

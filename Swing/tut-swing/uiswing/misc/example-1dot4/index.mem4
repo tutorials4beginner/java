@@ -1,0 +1,573 @@
+#define TOP ../../..
+#define TRAILPATH ../..
+#define IMAGEPATH $TOP/images
+#define LESSONHEAD ../index.html
+#define LESSONDIR misc
+#define TRAILDIR uiswing
+#define LESSONTITLE Using Other Swing Features
+#define TRAILHEAD $TRAILPATH/index.html
+#define TRAILTITLE Creating a GUI with JFC/Swing
+#include $TRAILPATH/traildefs.mem4
+#include $TOP/bookdefs.mem4
+#define PAGETITLE $LESSONTITLE: Examples (1.4)
+#define PREVIOUSFILE $TRAILPATH/misc/example-swing/index.html
+#define NEXTFILE $TRAILPATH/layout/example-swing/index.html
+#include $STDPATH/header.mem4
+
+#define JNLPBASE http://java.sun.com/docs/books/tutorialJWS/uiswing/misc/example-1dot4
+
+#define MOSTLYAPPLICATIONS
+#define 1112PRESENT
+#include $TRAILPATH/14exampleinclude.mem4
+
+
+</blockquote>
+<h4>Compiling and Running the Examples Locally</h4>
+<blockquote>
+
+#include $TRAILPATH/14exampleappnote.mem4
+
+#include $TRAILPATH/requiredegfiles.mem4
+
+<p>
+You can find out which files each example needs by consulting the
+following table or by looking at the comments at the beginning of
+each source file.
+</blockquote>
+
+<a name=table><h4>Table of Examples</h4></a>
+
+<table border="1">
+
+<tr>
+<td><strong>Example</strong></td>
+<td><strong>Source Files
+    <em>(first file has the main method, except
+        for examples that run only as applets)</em></strong></td>
+<td><strong>Image & Other Files</strong></td>
+<td><strong>Where Described</strong></td>
+</tr>
+
+<tr>
+<td><a name="AccessibleScrollDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME AccessibleScrollDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE AccessibleScrollDemo.java
+    LINKTEXT AccessibleScrollDemo.java
+)
+
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE Rule.java
+    LINKTEXT Rule.java
+)
+
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE Corner.java
+    LINKTEXT Corner.java
+)
+
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE ScrollablePicture.java
+    LINKTEXT ScrollablePicture.java
+)
+
+    </a></td>
+<td><a href="images/youngdad.jpeg"><code>youngdad.jpeg</code></a></td>
+<td><a href="../access.html">
+    How to Support Assistive Technologies</a></td>
+</tr>
+
+<tr>
+<td><a name="ActionDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME ActionDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE ActionDemo.java
+    LINKTEXT ActionDemo.java
+)
+
+    </a></td>
+<td><a href="http://developer.java.sun.com/developer/techDocs/hi/repos
+itory/"><code>jlfgr-1_0.jar</code></a>
+</td>
+<td><a href="../action.html">
+    How to Use Actions</a></td>
+</tr>
+
+<tr>
+<td><a name="BasicDnD">
+#usemacro JNLPLINK (
+    DEMO_NAME BasicDnD
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE BasicDnD.java
+    LINKTEXT BasicDnD.java
+)
+
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="BorderDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME BorderDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE BorderDemo.java
+    LINKTEXT BorderDemo.java
+)
+
+    </a></td>
+<td><a href="images/wavy.gif"><code>wavy.gif</code></a></td>
+<td><a href="../border.html">
+    How to Use Borders</a></td>
+</tr>
+
+<tr>
+<td><a name="CustomIconDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME CustomIconDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE CustomIconDemo.java
+    LINKTEXT CustomIconDemo.java
+)
+
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE ArrowIcon.java
+    LINKTEXT ArrowIcon.java
+)
+
+    </a></td>
+<td><a href="images/middle.gif"><code>middle.gif</code></a></td>
+<td><a href="../icon.html">
+    How to Use Icons</a></td>
+</tr>
+
+<tr>
+<td><a name="DragColorDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME DragColorDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE DragColorDemo.java
+    LINKTEXT DragColorDemo.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE ColorTransferHandler.java
+    LINKTEXT ColorTransferHandler.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="DragColorTextFieldDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME DragColorTextFieldDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE DragColorTextFieldDemo.java
+    LINKTEXT DragColorTextFieldDemo.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE ColorTransferHandler.java
+    LINKTEXT ColorTransferHandler.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE ColorAndTextTransferHandler.java
+    LINKTEXT ColorAndTextTransferHandler.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="DragFileDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME DragFileDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE DragFileDemo.java
+    LINKTEXT DragFileDemo.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE FileAndTextTransferHandler.java
+    LINKTEXT FileAndTextTransferHandler.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE TabbedPaneController.java
+    LINKTEXT TabbedPaneController.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="DragListDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME DragListDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE DragListDemo.java
+    LINKTEXT DragListDemo.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE ArrayListTransferHandler.java
+    LINKTEXT ArrayListTransferHandler.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="DragPictureDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME DragPictureDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE DragPictureDemo.java
+    LINKTEXT DragPictureDemo.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE Picture.java
+    LINKTEXT Picture.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE DTPicture.java
+    LINKTEXT DTPicture.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE PictureTransferHandler.java
+    LINKTEXT PictureTransferHandler.java
+)
+    </a></td>
+<td><a href="images/Maya.jpg"><code>Maya.jpg</code></a>,
+    <a href="images/Anya.jpg"><code>Anya.jpg</code></a>,
+    <a href="images/Laine.jpg"><code>Laine.jpg</code></a>,
+    <a href="images/Cosmo.jpg"><code>Cosmo.jpg</code></a>,
+    <a href="images/Adele.jpg"><code>Adele.jpg</code></a>, 
+    <a href="images/Alexi.jpg"><code>Alexi.jpg</code></a>.
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="DragPictureDemo2">
+#usemacro JNLPLINK (
+    DEMO_NAME DragPictureDemo2
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE DragPictureDemo2.java
+    LINKTEXT DragPictureDemo2.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE Picture.java
+    LINKTEXT Picture.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE DTPicture.java
+    LINKTEXT DTPicture.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE PictureTransferHandler.java
+    LINKTEXT PictureTransferHandler.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE TransferActionListener.java
+    LINKTEXT TransferActionListener.java
+)
+    </a></td>
+<td><a href="images/Maya.jpg"><code>Maya.jpg</code></a>,
+    <a href="images/Anya.jpg"><code>Anya.jpg</code></a>,
+    <a href="images/Laine.jpg"><code>Laine.jpg</code></a>,
+    <a href="images/Cosmo.jpg"><code>Cosmo.jpg</code></a>,
+    <a href="images/Adele.jpg"><code>Adele.jpg</code></a>, 
+    <a href="images/Alexi.jpg"><code>Alexi.jpg</code></a>.
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="ExtendedDnDDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME ExtendedDnDDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE ExtendedDnDDemo.java
+    LINKTEXT ExtendedDnDDemo.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE StringTransferHandler.java
+    LINKTEXT StringTransferHandler.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE ListTransferHandler.java
+    LINKTEXT ListTransferHandler.java
+)
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE TableTransferHandler.java
+    LINKTEXT TableTransferHandler.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="FocusConceptsDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME FocusConceptsDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE FocusConceptsDemo.java
+    LINKTEXT FocusConceptsDemo.java
+)
+    </a></td>
+<td>&nbsp;&nbsp;</td>
+<td><a href="../focus.html">
+    How to Use the Focus Subsystem</a></td>
+</tr>
+
+<tr>
+<td><a name="FocusTraversalDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME FocusTraversalDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE FocusTraversalDemo.java
+    LINKTEXT FocusTraversalDemo.java
+)
+    </a></td>
+<td>&nbsp;&nbsp;</td>
+<td><a href="../focus.html">
+    How to Use the Focus Subsystem</a></td>
+</tr>
+
+<tr>
+<td><a name="IconDemoApplet">
+#usemacro JNLPLINK (
+    DEMO_NAME IconDemoApplet
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE IconDemoApplet.java
+    LINKTEXT IconDemoApplet.java
+)
+
+    <em>(an applet)</em>
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE SwingWorker.java
+    LINKTEXT SwingWorker.java
+)
+
+    <br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE Photo.java
+    LINKTEXT Photo.java
+)
+</td>
+<td><a href="images/right.gif"><code>right.gif</code></a>,
+    <a href="images/left.gif"><code>left.gif</code></a>,
+    <a href="images/dimmedRight.gif"><code>dimmedRight.gif</code></a>,
+    <a href="images/dimmedLeft.gif"><code>dimmedLeft.gif</code></a>,
+    <a href="images/stickerface.gif"><code>stickerface.gif</code></a>,
+    <a href="images/lainesTongue.gif"><code>lainesTongue.gif</code></a>,
+    <a href="images/kathyCosmo.gif"><code>kathyCosmo.gif</code></a>,
+    <a href="images/ewanPumpkin.gif"><code>ewanPumpkin.gif</code></a>,
+    <br>To run the applet:
+    <a href="../IconDemoApplet.html"><code>IconDemoApplet.html</code></a>
+    <br>To view the &lt;APPLET&gt; tag:
+    <a href="../IconDemoApplet.atag"><code>IconDemoApplet.atag</code></a>
+    </a></td>
+<td><a href="../icon.html">
+    How to Use Icons</a></td>
+</tr>
+
+<tr>
+<td><a name="InputVerificationDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME InputVerificationDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE InputVerificationDemo.java
+    LINKTEXT InputVerificationDemo.java
+)
+    </a></td>
+<td>&nbsp;&nbsp;</td>
+<td><a href="../focus.html">
+    How to Use the Focus Subsystem</a></td>
+</tr>
+
+<tr>
+<td><a name="InputVerificationDialogDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME InputVerificationDialogDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE InputVerificationDialogDemo.java
+    LINKTEXT InputVerificationDialogDemo.java
+)
+    </a></td>
+<td>&nbsp;&nbsp;</td>
+<td><a href="../focus.html">
+    How to Use the Focus Subsystem</a></td>
+</tr>
+
+<tr>
+<td><a name="LabelDnD">
+#usemacro JNLPLINK (
+    DEMO_NAME LabelDnD
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE LabelDnD.java
+    LINKTEXT LabelDnD.java
+)
+
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="LabelDnD2">
+#usemacro JNLPLINK (
+    DEMO_NAME LabelDnD2
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE LabelDnD2.java
+    LINKTEXT LabelDnD2.java
+)
+
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../dnd.html">
+    How to Use Data Transfer</a></td>
+</tr>
+
+<tr>
+<td><a name="TrackFocusDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME TrackFocusDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE TrackFocusDemo.java
+    LINKTEXT TrackFocusDemo.java
+)
+<br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE Picture.java
+    LINKTEXT Picture.java
+)
+    </a></td>
+<td><a href="images/Maya.jpg"><code>Maya.jpg</code></a>,
+    <a href="images/Anya.jpg"><code>Anya.jpg</code></a>,
+    <a href="images/Laine.jpg"><code>Laine.jpg</code></a>,
+    <a href="images/Cosmo.jpg"><code>Cosmo.jpg</code></a>,
+    <a href="images/Adele.jpg"><code>Adele.jpg</code></a>,
+    <a href="images/Alexi.jpg"><code>Alexi.jpg</code></a>.
+</td>
+<td><a href="../focus.html">
+    How to Use the Focus Subsystem</a></td>
+</tr>
+</table>
+
+</font>
+
+#include $STDPATH/footer.mem4

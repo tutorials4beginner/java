@@ -1,0 +1,462 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>Example Four: An Improved <code>CelsiusConverter</code> (The Java&trade; Tutorials &gt; 
+            Creating a GUI with JFC/Swing &gt; Learning Swing by Example)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+<script type="text/javascript">
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+    
+</script>
+
+    </head>
+<body onload="load()">
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class=PrintHeaders>
+        <b>Trail:</b> Creating a GUI with JFC/Swing
+        <br><b>Lesson:</b> Learning Swing by Example
+    </div>
+
+    <div id=LeftBar class=LeftBar_shown>
+        <div id=Contents>
+            <div class="linkLESSON"><a href="index.html">Learning Swing by Example</a></div>
+<div class="linkAHEAD"><a href="example1.html">Example One: Your First Swing Program</a></div>
+<div class="linkAHEAD"><a href="example2.html">Example Two: <code>SwingApplication</code></a></div>
+<div class="linkAHEAD"><a href="example3.html">Example Three: <code>CelsiusConverter</code></a></div>
+<div class="nolinkAHEAD">Example Four: An Improved <code>CelsiusConverter</code></div>
+<div class="linkAHEAD"><a href="example5.html">Example Five: <code>LunarPhases</code></a></div>
+<div class="linkAHEAD"><a href="example6.html">Example Six: <code>VoteDialog</code></a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+</div>
+    </div>
+    <div id=MainFlow class=MainFlow_indented>
+            <span id=BreadCrumbs>
+                <a href=../../index.html target=_top>Home Page</a>
+                &gt;
+                <a href=../index.html target=_top>Creating a GUI with JFC/Swing</a>
+                &gt;
+                <a href=index.html target=_top>Learning Swing by Example</a>
+            </span>
+            <div class=NavBit>
+                <a target=_top href=example3.html>&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target=_top href=../TOC.html>Trail</a>&nbsp;&bull;&nbsp;<a target=_top href=example5.html>Next&nbsp;&raquo;</a>
+            </div>
+            <div id=PageTitle>Example Four: An Improved <code>CelsiusConverter</code></div>
+            <blockquote>
+<!--Learn by Example-->
+<!--Example Three: CelsiusConverter-->
+
+Topics illustrated in this example: 
+<UL>
+  <li><A HREF="#addinghtml">Adding HTML</A>
+  <li><A HREF="#addingicon">Adding an Icon</A>
+  <li><A HREF="#setDefault">Setting the Default Button</A>
+  <li><A HREF="#createFTF">Creating a Formatted Text Field</A>
+</UL>
+
+Now that we've examined <code>CelsiusConverter</code>, let's 
+improve it. First, we'll spiff it up by adding colored text. 
+Next, we'll improve the button by making it the default button 
+and adding a graphic. Finally, we'll refine the text field so 
+that only numbers are accepted. 
+
+<A NAME="addinghtml"></A>
+<h3>Adding HTML</h3>
+<blockquote> 
+
+You can specify the appearance of any Swing component's text 
+in a couple of ways. First, you can call the <code>setFont</code> 
+method to specify the font and the <code>setColor</code> 
+method to set the color. Second, when you want to vary the 
+font or color within the text or insert formatting such as 
+line breaks, you can use HTML tags.
+<P>
+Buttons, labels, and many other Swing components let you use HTML 
+to specify the format of the text displayed by the component. 
+The following figure shows a revised temperature converter, 
+
+<a class="SourceLink" target="_blank" href="examples/CelsiusConverter2.java"><code>CelsiusConverter2</code></a>, which uses HTML to specify multiple text colors on 
+the <code>fahrenheitLabel</code>. The code follows the figure.
+
+<p><center><IMG SRC="../../figures/uiswing/learn/8CelsiusConverter2.gif" WIDTH="321 " HEIGHT="115" ALIGN="BOTTOM" ALT="The improved CelsiusConverter2 application with colored fonts on the Fahrenheit label and a graphic on the button. "></center></p>
+To use HTML in a component's text, simply place the 
+<code>&#60;HTML&#62;</code> tag at the beginning of the 
+text string and then use any valid HTML code in the remainder 
+of the string. The preceding code uses the code>&#60;font&#62;</code> 
+tag to specify text color and the HTML code <code>&amp;#176</code>
+to display the degree symbol. 
+More information on adding HTML to components is available in 
+<a class="TutorialLink" target="_top" href="../components/html.html">Using HTML in Swing Components</a>. 
+
+<blockquote><hr><strong>Note:</strong>&nbsp;Some older releases don't support HTML text in buttons.
+In those that don't (such as Swing 1.1) putting HTML in a button
+results in an ugly-looking button whose label starts with
+<code>&#60;HTML&#62;</code>. You can find out when HTML support
+was added to each component by consulting the Version Note in 
+<a class="TutorialLink" target="_top" href="../components/html.html">Using HTML in Swing Components</a>.
+<hr></blockquote>
+
+</blockquote>
+
+
+<A NAME="addingicon"></A>
+<h3>Adding an Icon</h3>
+<blockquote>
+
+Some Swing components can be decorated with an <I>icon</I> &#151; a 
+fixed-size image. A Swing icon is an object that adheres to 
+the <code>Icon</code> interface. Swing provides a particularly 
+useful implementation of the <code>Icon</code> interface: 
+<code>ImageIcon</code>, which paints an icon 
+from a GIF, JPEG, or PNG image. Here's the code that adds the 
+arrow graphic to the <code>convertTemp</code> button:
+
+<blockquote><pre>
+ImageIcon convertIcon = createImageIcon("images/convert.gif", 
+                                        "Convert temperature");
+...
+convertTemp = new JButton(icon);
+</pre></blockquote>
+
+The <code>createImageIcon</code> method (used in the preceding 
+snippet) is one we use in many of our code samples. The first 
+argument specifies the file to load. The second argument 
+provides a description of the icon that assistive technologies 
+can use. For details, see 
+<a class="TutorialLink" target="_top" href="../components/icon.html">How to Use Icons</a>.
+</blockquote>
+
+
+
+<A NAME="setDefault"></A>
+<h3>Setting the Default Button</h3>
+<blockquote>
+Only one button in a top-level container can be the default button. The default button typically has a highlighted appearance and acts as though clicked whenever the top-level container has the keyboard focus and the user presses the Enter (or Return) key. The exact implementation depends on the look and feel.
+<P>
+We made the <code>convertTemp</code> button the default button with the following code:
+
+<blockquote><pre>
+//Set the button to be default button in the frame.
+converterFrame.getRootPane().setDefaultButton(convertTemp);
+</pre></blockquote>
+
+Invoking <code>getRootPane().setDefaultButton</code> on a top-level container, such as <code>converterFrame</code> (a <code>JFrame</code>) makes the specified button the default for that container. You might be wondering what a root pane is. Well, every top-level container has one--it works behind the scenes to manage details such as the content pane and the menu bar. You generally don’t need to know anything more about root panes to use Swing components. 
+</blockquote>
+
+
+<A NAME="createFTF"></A>
+<h3>Creating a Formatted Text Field</h3>
+<blockquote>
+In the original <code>CelsiusConverter</code> application, you could enter alphabetic or special characters in the text field. If the <B>Convert</B> button was pressed when the text was invalid, a <code>NumberFormatException</code> was thrown and the <code>FahrenheitLabel</code> was not updated. 
+<P>
+<code>CelsiusConverter2</code> prevents the user from entering anything but a number by replacing the <code>JTextField</code> with a <code>JFormattedTextField</code>. Formatted text fields were added in v1.4. They provide a way for developers to easily specify the legal set of characters that can be entered into a text component. In the following code, we use <code>java.text.DecimalFormat</code> to ensure that the text field accepts only numbers.
+
+<blockquote><pre>
+//Create the format for the text field and the formatted text field
+tempCelsius = new JFormattedTextField(
+                             new java.text.DecimalFormat("##0.0#"));
+</pre></blockquote>
+
+Formatted text fields are covered in depth in 
+<a class="TutorialLink" target="_top" href="../components/formattedtextfield.html">How to Use Formatted Text Fields</a>.
+</blockquote>
+
+
+<p>
+
+        </blockquote>
+        <div class=NavBit>
+            <a target=_top href=example3.html>&laquo; Previous</a>
+            &bull;
+            <a target=_top href=../TOC.html>Trail</a>
+            &bull;
+            <a target=_top href=example5.html>Next &raquo;</a>
+        </div>
+    </div>
+    <div id=Footer>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../information/copyright.html">Copyright</a>
+    1995-2006 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    <div class=PrintHeaders>
+        <b>Previous page:</b> Example Three: <code>CelsiusConverter</code>
+        <br><b>Next page:</b> Example Five: <code>LunarPhases</code>
+    </div>
+    </body>
+</html> 

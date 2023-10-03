@@ -1,0 +1,457 @@
+#define TOP ../../..
+#define TRAILPATH ../..
+#define IMAGEPATH $TOP/images
+#define LESSONHEAD ../index.html
+#define LESSONDIR layout
+#define TRAILDIR uiswing
+#define LESSONTITLE Laying Out Components Within a Container
+#define TRAILHEAD $TRAILPATH/index.html
+#define TRAILTITLE Creating a GUI with JFC/Swing
+#include $TRAILPATH/traildefs.mem4
+#include $TOP/bookdefs.mem4
+#define PAGETITLE $LESSONTITLE: Examples (1.4)
+#define PREVIOUSFILE $TRAILPATH/layout/example-swing/index.html
+#define NEXTFILE $TRAILPATH/events/example-swing/index.html
+#include $STDPATH/header.mem4
+
+#define JNLPBASE http://java.sun.com/docs/books/tutorialJWS/uiswing/layout/example-1dot4
+#define TRIALJNLPBASE example-1dot4
+
+#define ONLYAPPLICATIONS
+#define 1112PRESENT
+#include $TRAILPATH/14exampleinclude.mem4
+
+#usemacro BEGINNOTE (
+    NOTEHEAD Note
+)
+The examples that use <code>SpringLayout</code>
+don't work in 1.3 or earlier versions
+because <code>SpringLayout</code> was introduced in 1.4.
+$ENDNOTE
+
+
+</blockquote>
+<h4>Compiling and Running the Examples Locally</h4>
+<blockquote>
+
+#include $TRAILPATH/14exampleappnote.mem4
+
+#include $TRAILPATH/requiredegfiles.mem4
+
+<p>
+You can find out which files each example needs by consulting the
+following table or by looking at the comments at the beginning of
+each source file.
+</blockquote>
+
+<a name="table">
+<h4>Table of Examples</h4>
+</a>
+
+<p>
+<table border="1" summary="Table of 1.4 layout examples">
+
+<tr>
+<th scope="col"><strong>Example
+<th scope="col"><strong>Source Files
+<br>
+<em>(first file has the main method)</em></td>
+<th scope="col"><strong>Image and Other Files</strong></td>
+<th scope="col"><strong>Where Described</td>
+</tr>
+
+<tr>
+<td scope="row"><a name="AbsoluteLayoutDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME AbsoluteLayoutDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE AbsoluteLayoutDemo.java
+    LINKTEXT AbsoluteLayoutDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../none.html">
+    Doing Without a Layout Manager</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="BorderLayoutDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME BorderLayoutDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE BorderLayoutDemo.java
+    LINKTEXT BorderLayoutDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../border.html">
+    How to Use BorderLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="BoxAlignmentDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME BoxAlignmentDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE BoxAlignmentDemo.java
+    LINKTEXT BoxAlignmentDemo.java
+)
+    </a></td>
+<td><a href="images/geek-cght.gif"><code>geek-cght.gif</code></a>
+    <a href="images/middle.gif"><code>middle.gif</code></a></td>
+<td><a href="../box.html">
+    How to Use BoxLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="BoxLayoutDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME BoxLayoutDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE BoxLayoutDemo.java
+    LINKTEXT BoxLayoutDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../box.html">
+    How to Use BoxLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="BoxLayoutDemo2">
+#usemacro JNLPLINK (
+    DEMO_NAME BoxLayoutDemo2
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE BoxLayoutDemo2.java
+    LINKTEXT BoxLayoutDemo2.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../box.html">
+    How to Use BoxLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="CardLayoutDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME CardLayoutDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE CardLayoutDemo.java
+    LINKTEXT CardLayoutDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../card.html">
+    How to Use CardLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="CustomLayoutDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME CustomLayoutDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE CustomLayoutDemo.java
+    LINKTEXT CustomLayoutDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../custom.html">
+    Creating a Custom Layout Manager</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="FlowLayoutDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME FlowLayoutDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE FlowLayoutDemo.java
+    LINKTEXT FlowLayoutDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../flow.html">
+    How to Use FlowLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="GraphPaperTest">
+#usemacro JNLPLINK (
+    DEMO_NAME GraphPaperTest
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE GraphPaperTest.java
+    LINKTEXT GraphPaperTest.java
+)
+<br>
+&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE GraphPaperLayout.java
+    LINKTEXT GraphPaperLayout.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../custom.html">
+    Creating a Custom Layout Manager</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="GridBagLayoutDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME GridBagLayoutDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE GridBagLayoutDemo.java
+    LINKTEXT GridBagLayoutDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../gridbag.html">
+    How to Use GridBagLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="GridLayoutDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME GridLayoutDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE GridLayoutDemo.java
+    LINKTEXT GridLayoutDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../grid.html">
+    How to Use GridLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="SpringBox">
+#usemacro JNLPLINK (
+    DEMO_NAME SpringBox
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE SpringBox.java
+    LINKTEXT SpringBox.java
+)
+<br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE SpringUtilities.java
+    LINKTEXT SpringUtilities.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../spring.html">
+    How to Use SpringLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="SpringCompactGrid">
+#usemacro JNLPLINK (
+    DEMO_NAME SpringCompactGrid
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE SpringCompactGrid.java
+    LINKTEXT SpringCompactGrid.java
+)
+
+<br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE SpringUtilities.java
+    LINKTEXT SpringUtilities.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../spring.html">
+    How to Use SpringLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="SpringDemo1">
+    SpringDemo1
+     </a>
+     <a href="#dontrun">*</a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE SpringDemo1.java
+    LINKTEXT SpringDemo1.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../spring.html">
+    How to Use SpringLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="SpringDemo2">
+    SpringDemo2
+     </a>
+     <a href="#dontrun">*</a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE SpringDemo2.java
+    LINKTEXT SpringDemo2.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../spring.html">
+    How to Use SpringLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="SpringDemo3">
+#usemacro JNLPLINK (
+    DEMO_NAME SpringDemo3
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE SpringDemo3.java
+    LINKTEXT SpringDemo3.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../spring.html">
+    How to Use SpringLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="SpringDemo4">
+#usemacro JNLPLINK (
+    DEMO_NAME SpringDemo4
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE SpringDemo4.java
+    LINKTEXT SpringDemo4.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../spring.html">
+    How to Use SpringLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="SpringForm">
+#usemacro JNLPLINK (
+    DEMO_NAME SpringForm
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE SpringForm.java
+    LINKTEXT SpringForm.java
+)
+<br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE SpringUtilities.java
+    LINKTEXT SpringUtilities.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../spring.html">
+    How to Use SpringLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="SpringGrid">
+#usemacro JNLPLINK (
+    DEMO_NAME SpringGrid
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE SpringGrid.java
+    LINKTEXT SpringGrid.java
+)
+<br>&nbsp;&nbsp;
+#usemacro SOURCELINK (
+    LINKFILE SpringUtilities.java
+    LINKTEXT SpringUtilities.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../spring.html">
+    How to Use SpringLayout</a></td>
+</tr>
+
+<tr>
+<td scope="row"><a name="TabDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME TabDemo
+)
+     </a></td>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE TabDemo.java
+    LINKTEXT TabDemo.java
+)
+    </a></td>
+<td>&nbsp;</td>
+<td><a href="../card.html">
+    How to Use CardLayout</a></td>
+</tr>
+
+</table>
+</a>
+
+<a name="dontrun">*</a>
+SpringDemo1 and SpringDemo2 are intentionally broken,
+and we don't advise running them using Java Web Start.
+</p>
+
+#include $STDPATH/footer.mem4

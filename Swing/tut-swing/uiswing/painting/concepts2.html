@@ -1,0 +1,704 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>Introduction to Painting Concepts (The Java&trade; Tutorials &gt; 
+            Creating a GUI with JFC/Swing &gt; Performing Custom Painting)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+<script type="text/javascript">
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+    
+</script>
+
+    </head>
+<body onload="load()">
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class=PrintHeaders>
+        <b>Trail:</b> Creating a GUI with JFC/Swing
+        <br><b>Lesson:</b> Performing Custom Painting
+    </div>
+
+    <div id=LeftBar class=LeftBar_shown>
+        <div id=Contents>
+            <div class="linkLESSON"><a href="index.html">Performing Custom Painting</a></div>
+<div class="linkAHEAD"><a href="concepts.html">How Swing Components Are Displayed</a></div>
+<div class="nolinkAHEAD">Introduction to Painting Concepts</div>
+<div class="linkAHEAD"><a href="practice.html">Implementing a Custom Component</a></div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Painting Problems</a></div>
+</div>
+    </div>
+    <div id=MainFlow class=MainFlow_indented>
+            <span id=BreadCrumbs>
+                <a href=../../index.html target=_top>Home Page</a>
+                &gt;
+                <a href=../index.html target=_top>Creating a GUI with JFC/Swing</a>
+                &gt;
+                <a href=index.html target=_top>Performing Custom Painting</a>
+            </span>
+            <div class=NavBit>
+                <a target=_top href=concepts.html>&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target=_top href=../TOC.html>Trail</a>&nbsp;&bull;&nbsp;<a target=_top href=practice.html>Next&nbsp;&raquo;</a>
+            </div>
+            <div id=PageTitle>Introduction to Painting Concepts</div>
+            <blockquote>
+This section gives an overview
+of what you need to know
+before you write code that paints Swing components.
+It concentrates on the coordinate system, 
+including how borders restrict the coordinates available for painting,
+and on the <code>Graphics</code> object
+passed in to paint methods.
+Although most of the API discussed isn't specific to Swing components,
+we concentrate on
+what <code>JComponent</code>s need.
+For information on actually painting,
+you should refer to the API documentation for the
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/Graphics.html"><code>Graphics</code></a> class and to the
+<a class="TutorialLink" target="_top" href="../../2d/index.html">2D Graphics</a> trail.
+
+</blockquote>
+<h3>
+<a name="coord">The Coordinate System</a>
+</h3>
+<blockquote>
+
+Each component has its own integer coordinate system,
+ranging from (0, 0) to (<em>width</em> - 1, <em>height</em> - 1),
+where <em>width</em> and <em>height</em>
+are the size of the component in pixels.
+As the following figure shows,
+the upper left corner of a component's painting area is (0, 0).
+The <em>x</em> coordinate increases to the right,
+and the <em>y</em> coordinate increases downward.
+
+<p><center><IMG SRC="../../figures/uiswing/painting/13ui33.gif" WIDTH="254" HEIGHT="137" ALIGN="BOTTOM" ALT="A component's coordinate system."></center></p><p>
+
+
+When painting, 
+you must take into account not only the component's size
+but also the size of the component's border, if any.
+For example, a border that paints a one-pixel line
+around a component
+effectively changes the top leftmost corner 
+of the component's non-background painting area from (0,0)
+to (1,1) and
+reduces the width and the height of the painting area 
+by two pixels each (one pixel per side).
+The following figure demonstrates this:
+
+<p><center><IMG SRC="../../figures/uiswing/painting/border.gif" WIDTH="384" HEIGHT="172" ALIGN="BOTTOM" ALT="Remember to account for the component's border."></center></p><font color=gray>
+[PENDING: This figure will change to match the previous one better,
+and to be clearer and more correct.]
+</font>
+
+<p>
+You can get the width and height of any <code>JComponent</code>
+using its <code>getWidth</code> and 
+<code>getHeight</code> methods.
+The <code>getSize</code> method
+is another option
+that works for all <code>Component</code>s.
+To determine the border size,
+use the <code>getInsets</code> method.
+Here is some code that a component might use
+to determine the width and height
+available for custom painting:
+
+<blockquote><pre>
+protected void paintComponent(Graphics g) {
+    ...
+    Insets insets = getInsets();
+    int currentWidth = getWidth() - insets.left - insets.right;
+    int currentHeight = getHeight() - insets.top - insets.bottom;
+    ...
+    ...<em>/* First painting occurs at (x,y), where x is at least
+      insets.left, and y is at least insets.top. */...</em>
+}
+</pre></blockquote>
+
+<p>
+
+To familiarize yourself with the coordinate system,
+you can play with the CoordinatesDemo application,
+which features a component implemented using
+an inner class named <code>CoordinateArea</code>.
+The <code>CoordinateArea</code> has
+a preferred size of 400x75
+and a solid red border that
+occupies 5 pixels at the left and bottom,
+and 1 pixel at the top and right.
+Like any good component,
+it starts painting its innards (a 20x20-pixel gray grid)
+where the border ends &#151;
+in this case, at (5,1).
+The <code>CoordinateArea</code> also paints a dot 
+where the user clicks.
+As you can see from the following figure,
+a label at the bottom of the GUI
+displays information about the cursor and click location.
+
+<p><center><IMG SRC="../../figures/uiswing/painting/CoordinatesDemo.gif" WIDTH="410" HEIGHT="124" ALIGN="BOTTOM" ALT="CoordinatesDemo"></center></p>
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> <a href="http://java.sun.com/docs/books/tutorialJWS/uiswing/painting/examples/CoordinatesDemo.jnlp">Run CoordinatesDemo</a> using
+<a class="TutorialLink" target="_top" href="../../information/javawebstart.html">Java<sup><font size=-2>TM</font></sup> Web Start</a>.    Or, to compile and run the example yourself,
+     consult the
+     <a href="examples/index.html#CoordinatesDemo">example index</a>.
+
+<li> Move the cursor over the <code>CoordinateArea</code>,
+     including its red border.
+     <br>
+     Note the location of the cursor,
+     as displayed at the bottom of the window.
+     (Until bug #
+<a class="OutsideLink" target="_blank" href="http://developer.java.sun.com/developer/bugParade/bugs/4777616.html">4777616</a>     is fixed, when you run CoordinatesDemo using Java Web
+     Start the size of the main component won't be 400x75 &#151;
+     it'll be taller.)
+
+<li> Move the cursor to 
+     the center of the <code>CoordinateArea</code>
+     and click.
+     <br>
+     A 7x7 dot appears,
+     and the label at the bottom of the window
+     displays its location, as well as the cursor's current location.
+
+<li> Move the cursor to be near or barely within
+     the red border on the left or bottom and click.
+     <br>
+     The dot that appears looks smaller than 7x7
+     because it's obscured by the border.
+     The component's painting code paints it fully,
+     but because the <code>paintBorder</code> method
+     is called after <code>paintComponent</code>,
+     the border is painted on top of the dot.
+     If the border didn't completely paint over its area
+     in an opaque color,
+     you would be able to see more of the dot.
+</ol>
+<hr></blockquote>
+
+<p>
+The SelectionDemo example shown in the following figure
+is another that can give you a feeling for coordinates.
+It paints a continuously updating rectangle,
+which the user sets by dragging the mouse.
+To avoid unnecessary painting,
+the component's mouse-dragged and mouse-released event handler
+uses a version of the <code>repaint</code> method
+that specifies which area of the component needs to be repainted.
+
+<p><center><IMG SRC="../../figures/uiswing/painting/SelectionDemo.gif" WIDTH="510" HEIGHT="149" ALIGN="BOTTOM" ALT="More fun with coordinates"></center></p>
+You can 
+<b><a href=http://java.sun.com/docs/books/tutorialJWS/uiswing/painting/examples/SelectionDemo.jnlp>run SelectionDemo</a></b>
+using 
+<a class="TutorialLink" target="_top" href="../../information/javawebstart.html">Java Web Start</a>.    Or, to compile and run the example yourself,
+     consult the
+     <a href="examples/index.html#SelectionDemo">example index</a>.
+
+<p>
+The code is in
+<a class="SourceLink" target="_blank" href="examples/SelectionDemo.java"><code>SelectionDemo.java</code></a>.
+The following snippet
+shows how <code>repaint</code>
+is invoked by the event handler for
+mouse-dragged and mouse-released events.
+The handler gets the current cursor location,
+updates the selection rectangle,
+calculates the total area to be repainted,
+and then specifies that area to the <code>repaint</code> method.
+Note that the total area to be repainted
+is equal to the previously painted area
+plus the newly selected area.
+This way, it cleans up the previous painting,
+avoiding the faux pas of 
+leaving behind ghost images of the selection rectangle.
+
+<blockquote><pre>
+void updateSize(MouseEvent e) {
+    int x = e.getX();
+    int y = e.getY();
+    <em>...//save previous selection rectangle (rectToDraw)
+       //in previousRectDrawn...
+       //calculate new values for rectToDraw...</em>
+    Rectangle totalRepaint = rectToDraw.union(previousRectDrawn);
+    repaint(totalRepaint.x, totalRepaint.y,
+            totalRepaint.width, totalRepaint.height);
+}
+</pre></blockquote>
+
+Here is the code that paints the selection rectangle
+on top of the image:
+
+<blockquote><pre>
+g.drawRect(rectToDraw.x, rectToDraw.y, 
+           rectToDraw.width - 1, rectToDraw.height - 1)
+</pre></blockquote>
+
+<blockquote><hr><strong>Note:</strong>&nbsp;The last two arguments
+to <code>drawRect</code>
+have "- 1"
+because the painting system draws lines
+just below the specified rectangle,
+instead of within the specified rectangle.
+The same rule 
+of specifying one less than the desired width
+applies to other <code>draw<em>Xxx</em></code> methods.
+For <code>fill<em>Xxx</em></code> methods,
+on the other hand,
+you specify exactly the desired width and height in pixels.
+
+<p>
+Here are examples of painting two rectangles of
+the same size, one filled and one not:
+
+<blockquote><pre>
+g.fillRect(x, y, rectWidth, rectHeight);
+g.drawRect(x, y, rectWidth - 1, rectHeight - 1);
+</pre></blockquote>
+ 
+<hr></blockquote>
+
+
+</blockquote>
+<h3>
+The Graphics Object and Graphics2D
+</h3>
+<blockquote>
+
+The
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/Graphics.html"><code>Graphics</code></a> object passed into the <code>paintComponent</code> method
+provides both a context 
+and some methods for simple painting.
+In almost every case, <code>Graphics</code> objects
+are actually 
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/Graphics2D.html"><code>Graphics2D</code></a> objects.
+The <code>Graphics2D</code> class
+extends <code>Graphics</code>
+to provide more sophisticated control
+over geometry, coordinate transformations, 
+color management,
+and text layout.
+You can cast any <code>Graphics</code> parameter
+into a <code>Graphics2D</code> object
+as long as your program 
+uses the Java 2 platform (1.2 or later)
+and doesn't use the old printing API.
+
+<blockquote><hr><strong>Version note:</strong>&nbsp;The old printing API
+is centered around the
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/PrintJob.html"><code>java.awt.PrintJob</code></a> class.
+A 
+<a class="TutorialLink" target="_top" href="../../2d/printing/index.html">newer printing API</a> centered around
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/print/PrinterJob.html"><code>java.awt.print.PrinterJob</code></a> was introduced in 1.2;
+it uses <code>Graphics2D</code>.
+In 1.4.1, Java Plug-in
+printing was updated to use the newer printing API.
+<hr></blockquote>
+</ul>
+
+<p>
+The painting methods defined by <code>Graphics</code>
+include such standbys as
+<code>drawRect</code>, 
+<code>fillRect</code>, and
+<code>drawLine</code>.
+The <code>Graphics2D</code> class adds more flexible methods such as 
+<code>draw(Shape)</code> and
+<code>fill(Shape)</code>.
+
+<p>
+The graphics context provided by a <code>Graphics</code> object
+consists of state
+such as
+the current painting color,
+the current font,
+and
+the current painting area.
+The <code>Graphics2D</code> class
+adds more state, such as
+the alpha compositing mode,
+stroke, rendering hints, and color patterns
+such as textures and gradients.
+
+<p>
+In <code>JComponent</code>s,
+the <code>Graphics</code> object
+is initialized
+just before it's passed to
+<code>paintComponent</code>,
+so that its color and font 
+are set to the foreground color and font of the component.
+The same <code>Graphics</code> object
+is then passed to the <code>paintBorder</code>
+and <code>paintChildren</code> methods.
+This reuse is efficient
+but can lead to trouble if painting code
+permanently changes the <code>Graphics</code> object's state.
+For example, permanently changing the alpha compositing mode 
+of a <code>Graphics2D</code> object
+could cause the component's border or children to be painted incorrectly.
+To avoid problems, remember this rule:
+
+<blockquote>
+<hr>
+     <b>The <code>Graphics</code> object
+     should have the same state when you're finished painting
+     as it had when you started.</b>
+<hr>
+</blockquote>
+
+<p>
+You can take two approaches
+to avoid permanently changing the <code>Graphics</code> object:
+either restore the 
+<code>Graphics</code> object's original state,
+or use a copy of the original object.
+If you take the first approach,
+you don't need to bother restoring the font and color,
+since those properties are usually set before painting.
+Here's an example of the first approach:
+
+<blockquote><pre>
+<em>//Example of restoring the Graphics object's state</em>
+Graphics2D g2d = (Graphics2D)g;
+g2d.translate(x, y);   //set the transform
+...
+g2d.translate(-x, -y); //go back to the original transform
+</pre></blockquote>
+
+Here's an example of the second approach:
+
+<blockquote><pre>
+<em>//Example of copying the Graphics object</em>
+Graphics2D g2d = (Graphics2D)g.create(); //copy g
+g2d.translate(x, y);
+...
+g2d.dispose(); //release the copy's resources
+</pre></blockquote>
+
+The advantage of the first approach is
+that it doesn't create extra objects.
+The advantage of the second
+is that it's easy and guaranteed to succeed,
+no matter how much state you change.
+
+<p>
+
+
+<p>
+
+When writing your painting code,
+keep in mind that you can't depend on
+any graphics context except what's provided
+by the <code>Graphics</code> object.
+For example, 
+if you specify a painting area to <code>repaint</code>,
+you can't rely on
+the same painting area being specified in the next call
+to <code>paintComponent</code>.
+For one thing, multiple repaint requests can be coalesced 
+into a single <code>paintComponent</code> call.
+For another,
+the painting system occasionally calls <code>paintComponent</code>
+on its own, without any repaint request from your program &#151;
+for example,
+in response to first being shown
+or to a window that obscured it being moved.
+
+        </blockquote>
+        <div class=NavBit>
+            <a target=_top href=concepts.html>&laquo; Previous</a>
+            &bull;
+            <a target=_top href=../TOC.html>Trail</a>
+            &bull;
+            <a target=_top href=practice.html>Next &raquo;</a>
+        </div>
+    </div>
+    <div id=Footer>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../information/copyright.html">Copyright</a>
+    1995-2006 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    <div class=PrintHeaders>
+        <b>Previous page:</b> How Swing Components Are Displayed
+        <br><b>Next page:</b> Implementing a Custom Component
+    </div>
+    </body>
+</html> 

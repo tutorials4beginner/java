@@ -1,0 +1,137 @@
+#define TOP ../../..
+#define TRAILPATH ../..
+#define IMAGEPATH $TOP/images
+#define LESSONHEAD ../index.html
+#define LESSONDIR mini
+#define LESSONTITLE User Interfaces that Swing: A Quick Start Guide
+#define TRAILHEAD $TRAILPATH/index.html
+#define TRAILTITLE Creating a GUI with JFC/Swing
+#include $TRAILPATH/traildefs.mem4
+#include $TOP/bookdefs.mem4
+#define PAGETITLE $LESSONTITLE: Examples (1.3)
+#define PREVIOUSFILE $TRAILPATH/examples.html
+#define NEXTFILE $TRAILPATH/start/example-swing/index.html
+#include $STDPATH/header.mem4
+
+#define MOSTLYAPPLICATIONS
+#include $TRAILPATH/13exampleinclude.mem4
+
+<p>
+#include $TRAILPATH/requiredegfiles.mem4
+
+<p>
+
+<a name="table">
+<table border="1">
+
+<tr>
+<td><strong>Source Files</td>
+<td><strong>Image & Other Files</strong></td>
+<td><strong>Where Described</td>
+</tr>
+
+<tr>
+<td><a name="HelloWorldSwing">
+    
+#usemacro SOURCELINK (
+    LINKFILE HelloWorldSwing.java
+    LINKTEXT HelloWorldSwing.java
+)
+</a></td>
+<td>To run the applet:
+    <a href="../../start/HelloSwingApplet.html"><code>HelloSwingApplet.html</code></a>
+    <br>To view the <code>&lt;APPLET&gt;</code> tag:
+    <a href="../../start/HelloSwingApplet.atag"><code>HelloSwingApplet.atag</code></a></td>
+
+<td><a href="../firstexample.html">Your First Swing Program</a></td>
+</tr>
+
+<tr>
+<td>
+<a name="SwingApplication">
+    
+#usemacro SOURCELINK (
+    LINKFILE SwingApplication.java
+    LINKTEXT SwingApplication.java
+)
+</a></td>
+
+<td>&nbsp;</td>
+<td><a href="../secondexample.html">Example Two: <code>SwingApplication</code></a></td>
+</tr>
+
+
+<tr>
+<td>
+<a name="SimpleExample">
+    
+#usemacro SOURCELINK (
+    LINKFILE SimpleExample.java
+    LINKTEXT SimpleExample.java
+)
+</a></td>
+<td>&nbsp;</td>
+<td><a href="../secondexample.html">Example Two: <code>SwingApplication</code></a></td>
+</tr>
+
+
+<tr>
+<td>
+<a name="CelsiusConverter">
+    
+#usemacro SOURCELINK (
+    LINKFILE CelsiusConverter.java
+    LINKTEXT CelsiusConverter.java
+)
+</a></td>
+<td><a href="images/convert.gif"><code>convert.gif</code></a></td>
+<td><a href="../thirdexample.html">Example Three: <code>CelsiusConverter</code></a></td>
+</tr>
+
+
+<tr>
+<td>
+<a name="LunarPhases">
+    
+#usemacro SOURCELINK (
+    LINKFILE LunarPhases.java
+    LINKTEXT LunarPhases.java
+)
+</a></td>
+<td>
+Download all images at once: 
+ <a href="images/lunar-img.zip"><code>lunar-img.zip</code></a> (zip file)<BR>
+<P>
+or individually:<br>
+ <a href="images/image0.jpg"><code>image0.jpg</code></a> <BR>
+ <a href="images/image1.jpg"><code>image1.jpg</code></a> <BR>
+ <a href="images/image2.jpg"><code>image2.jpg</code></a> <BR>
+ <a href="images/image3.jpg"><code>image3.jpg</code></a> <BR>
+ <a href="images/image4.jpg"><code>image4.jpg</code></a> <BR>
+ <a href="images/image5.jpg"><code>image5.jpg</code></a> <BR>
+ <a href="images/image6.jpg"><code>image6.jpg</code></a> <BR>
+ <a href="images/image7.jpg"><code>image7.jpg</code></a> <BR>
+ <a href="images/image8.jpg"><code>image8.jpg</code></a> <BR>
+</td>
+<td><a href="../fourthexample.html">Example Four: <code>LunarPhases</code></a></td>
+</tr>
+
+
+<tr>
+<td><a name="VoteDialog">
+    
+#usemacro SOURCELINK (
+    LINKFILE VoteDialog.java
+    LINKTEXT VoteDialog.java
+)
+</a></td>
+<td>&nbsp;</td>
+<td><a href="../fifthexample.html">
+    Example Five: <code>VoteDialog</code></a></td>
+</tr>
+
+</table>
+</a>
+
+#include $STDPATH/footer.mem4
+

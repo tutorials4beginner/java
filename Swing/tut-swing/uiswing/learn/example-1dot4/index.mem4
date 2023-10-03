@@ -1,0 +1,194 @@
+#define TOP ../../..
+#define TRAILPATH ../..
+#define IMAGEPATH $TOP/images
+#define LESSONHEAD ../index.html
+#define LESSONDIR learn
+#define TRAILDIR uiswing
+#define LESSONTITLE Learning Swing by Example
+#define TRAILHEAD $TRAILPATH/index.html
+#define TRAILTITLE Creating a GUI with JFC/Swing
+#include $TRAILPATH/traildefs.mem4
+#include $TOP/bookdefs.mem4
+#define PAGETITLE $LESSONTITLE: Examples (1.4)
+#define PREVIOUSFILE $TRAILPATH/14start/example-1dot4/index.html
+#define NEXTFILE $TRAILPATH/components/example-swing/index.html
+#include $STDPATH/header.mem4
+
+#define JNLPBASE http://java.sun.com/docs/books/tutorialJWS/uiswing/learn/example-1dot4
+
+#define ONLYAPPLICATIONS
+#include $TRAILPATH/14exampleinclude.mem4
+
+<p>
+#include $TRAILPATH/requiredegfiles.mem4
+
+<p>
+You can find out which files each example needs by consulting the
+following table or by looking at the comments at the beginning of
+each source file.
+
+<a name="table"><h4>Table of Examples</h4></a>
+<table border="1">
+
+<tr>
+<td><strong>Example</td>
+<td><strong>Source Files</td>
+<td><strong>Image & Other Files</strong></td>
+<td><strong>Where Described</td>
+</tr>
+
+<tr>
+<td><a name="HelloWorldSwing">
+#usemacro JNLPLINK (
+    DEMO_NAME HelloWorldSwing
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE HelloWorldSwing.java
+    LINKTEXT HelloWorldSwing.java
+)
+</a></td>
+<td>&nbsp;
+<td><a href="../example1.html">Example One:<br>Your First Swing Program</a></td>
+</tr>
+
+<tr>
+<td>
+<a name="SwingApplication">
+#usemacro JNLPLINK (
+    DEMO_NAME SwingApplication
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE SwingApplication.java
+    LINKTEXT SwingApplication.java
+)
+</a></td>
+
+<td>&nbsp;</td>
+<td><a href="../example2.html">Example Two: <code>SwingApplication</code></a></td>
+</tr>
+
+
+<tr>
+<td>
+<a name="CelsiusConverter">
+#usemacro JNLPLINK (
+    DEMO_NAME CelsiusConverter
+)
+</a>
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE CelsiusConverter.java
+    LINKTEXT CelsiusConverter.java
+)
+</td>
+<td>&nbsp;
+<td><a href="../example3.html">Example Three: <code>CelsiusConverter</code></a></td>
+</tr>
+
+
+<tr>
+<td>
+<a name="CelsiusConverter2">
+#usemacro JNLPLINK (
+    DEMO_NAME CelsiusConverter2
+)
+</a>
+
+<td>
+#usemacro SOURCELINK (
+    LINKFILE CelsiusConverter2.java
+    LINKTEXT CelsiusConverter2.java
+)
+</td>
+<td><a href="images/convert.gif"><code>convert.gif</code></a></td>
+<td><a href="../example4.html">Example Four: <code>CelsiusConverter2</code></a></td>
+</tr>
+           
+
+<tr>
+<td>
+<a name="LunarPhases">
+#usemacro JNLPLINK (
+    DEMO_NAME LunarPhases
+)
+</a>
+    
+<td>
+#usemacro SOURCELINK (
+    LINKFILE LunarPhases.java
+    LINKTEXT LunarPhases.java
+)
+</td>
+<td>
+Download all images at once: 
+ <a href="images/lunar-img.zip"><code>lunar-img.zip</code></a> (zip file)<BR>
+<P>
+or individually:<br>
+ <a href="images/image0.jpg"><code>image0.jpg</code></a> <BR>
+ <a href="images/image1.jpg"><code>image1.jpg</code></a> <BR>
+ <a href="images/image2.jpg"><code>image2.jpg</code></a> <BR>
+ <a href="images/image3.jpg"><code>image3.jpg</code></a> <BR>
+ <a href="images/image4.jpg"><code>image4.jpg</code></a> <BR>
+ <a href="images/image5.jpg"><code>image5.jpg</code></a> <BR>
+ <a href="images/image6.jpg"><code>image6.jpg</code></a> <BR>
+ <a href="images/image7.jpg"><code>image7.jpg</code></a> <BR>
+</td>
+<td><a href="../example5.html">Example Five: <code>LunarPhases</code></a></td>
+</tr>
+
+
+<tr>
+<td><a name="VoteDialog">
+#usemacro JNLPLINK (
+    DEMO_NAME VoteDialog
+)
+</a>
+    
+<td>
+#usemacro SOURCELINK (
+    LINKFILE VoteDialog.java
+    LINKTEXT VoteDialog.java
+)
+</td>
+<td>&nbsp;</td>
+<td><a href="../example6.html">
+    Example Six: <code>VoteDialog</code></a></td>
+</tr>
+
+</table>
+</a>
+
+#include $STDPATH/footer.mem4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

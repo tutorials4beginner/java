@@ -1,0 +1,606 @@
+
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>How to Write a Component Listener (The Java&trade; Tutorials &gt; 
+            Creating a GUI with JFC/Swing &gt; Writing Event Listeners)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+<script type="text/javascript">
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+    
+</script>
+
+    </head>
+<body onload="load()">
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class=PrintHeaders>
+        <b>Trail:</b> Creating a GUI with JFC/Swing
+        <br><b>Lesson:</b> Writing Event Listeners
+        <br><b>Section:</b> Implementing Listeners for Commonly Handled Events
+    </div>
+
+    <div id=LeftBar class=LeftBar_shown>
+        <div id=Contents>
+            <div class="linkLESSON"><a href="index.html">Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="intro.html">Introduction to Event Listeners</a></div>
+<div class="linkAHEAD"><a href="generalrules.html">General Information about Writing Event Listeners</a></div>
+<div class="linkAHEAD"><a href="eventsandcomponents.html">Listeners Supported by Swing Components</a></div>
+<div class="linkAHEAD"><a href="handling.html">Implementing Listeners for Commonly Handled Events</a></div>
+<div class="linkBHEAD"><a href="actionlistener.html">How to Write an Action Listener</a></div>
+<div class="linkBHEAD"><a href="caretlistener.html">How to Write a Caret Listener</a></div>
+<div class="linkBHEAD"><a href="changelistener.html">How to Write a Change Listener</a></div>
+<div class="nolinkBHEAD">How to Write a Component Listener</div>
+<div class="linkBHEAD"><a href="containerlistener.html">How to Write a Container Listener</a></div>
+<div class="linkBHEAD"><a href="documentlistener.html">How to Write a Document Listener</a></div>
+<div class="linkBHEAD"><a href="focuslistener.html">How to Write a Focus Listener</a></div>
+<div class="linkBHEAD"><a href="internalframelistener.html">How to Write an Internal Frame Listener</a></div>
+<div class="linkBHEAD"><a href="itemlistener.html">How to Write an Item Listener</a></div>
+<div class="linkBHEAD"><a href="keylistener.html">How to Write a Key Listener</a></div>
+<div class="linkBHEAD"><a href="listdatalistener.html">How to Write a List Data Listener</a></div>
+<div class="linkBHEAD"><a href="listselectionlistener.html">How to Write a List Selection Listener</a></div>
+<div class="linkBHEAD"><a href="mouselistener.html">How to Write a Mouse Listener</a></div>
+<div class="linkBHEAD"><a href="mousemotionlistener.html">How to Write a Mouse-Motion Listener</a></div>
+<div class="linkBHEAD"><a href="mousewheellistener.html">How to Write a Mouse-Wheel Listener</a></div>
+<div class="linkBHEAD"><a href="propertychangelistener.html">How to Write a Property Change Listener</a></div>
+<div class="linkBHEAD"><a href="tablemodellistener.html">How to Write a Table Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeexpansionlistener.html">How to Write a Tree Expansion Listener</a></div>
+<div class="linkBHEAD"><a href="treemodellistener.html">How to Write a Tree Model Listener</a></div>
+<div class="linkBHEAD"><a href="treeselectionlistener.html">How to Write a Tree Selection Listener</a></div>
+<div class="linkBHEAD"><a href="treewillexpandlistener.html">How to Write a Tree-Will-Expand Listener</a></div>
+<div class="linkBHEAD"><a href="undoableeditlistener.html">How to Write an Undoable Edit Listener</a></div>
+<div class="linkBHEAD"><a href="windowlistener.html">How to Write Window Listeners</a></div>
+<div class="linkAHEAD"><a href="api.html">Listener API Table</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Event-Handling Problems</a></div>
+</div>
+    </div>
+    <div id=MainFlow class=MainFlow_indented>
+            <span id=BreadCrumbs>
+                <a href=../../index.html target=_top>Home Page</a>
+                &gt;
+                <a href=../index.html target=_top>Creating a GUI with JFC/Swing</a>
+                &gt;
+                <a href=index.html target=_top>Writing Event Listeners</a>
+            </span>
+            <div class=NavBit>
+                <a target=_top href=changelistener.html>&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target=_top href=../TOC.html>Trail</a>&nbsp;&bull;&nbsp;<a target=_top href=containerlistener.html>Next&nbsp;&raquo;</a>
+            </div>
+            <div id=PageTitle>How to Write a Component Listener</div>
+            <blockquote>
+
+One or more component events are fired
+by a <code>Component</code> object
+just after the component is hidden, made visible, moved, or resized.
+An example of a component listener
+might be in a GUI builder tool
+that's displaying information about the size 
+of the currently selected component,
+and that needs to know when the component's size changes.
+You shouldn't need to use component events
+to manage basic layout and rendering.
+
+<p>
+The component-hidden and component-shown events
+occur only as the result of calls to a <code>Component</code>'s
+<code>setVisible</code> method.
+For example, a window might be miniaturized into an icon (iconified)
+without a component-hidden event being fired.
+
+<p>
+The following example demonstrates component events.
+The window contains a panel that has a label and a check box.
+The check box controls whether the label is visible.
+A text area displays a message every time
+the window, panel, label, or check box
+fires a component event.
+
+<p>
+<p><center><IMG SRC="../../figures/uiswing/events/ComponentEventDemo.png" WIDTH="334" HEIGHT="235" ALIGN="BOTTOM" ALT=""></center></p>
+<p>
+<blockquote><hr><strong>Try this:</strong>&nbsp;
+<ol>
+<li> <a href="http://java.sun.com/docs/books/tutorialJWS/uiswing/events/examples/ComponentEventDemo.jnlp">Run
+     ComponentEventDemo</a> using
+     <a href=http://java.sun.com/products/javawebstart>
+     Java<sup><font size=-2>TM</font></sup> Web Start</a>.
+     Or, to compile and run the example yourself,
+     consult the
+     <a href="examples/index.html#ComponentEventDemo">example index</a>.
+<li> When the window appears, one or more component-shown
+     events have been fired.
+<li> Click the check box to hide the label.
+     <br>
+     The label fires a component-hidden event.
+     The panel fires component-moved and component-resized events.
+     The check box fires a component-moved event.
+
+<li> Click the check box again to show the label.
+     <br>
+     The label fires a component-shown event.
+     The panel fires component-moved and component-resized events.
+     The check box fires a component-moved event.
+
+<li> Iconify and then deiconify the window.
+     <br>
+     You do <em>not</em> get component-hidden or -shown events.
+     If you want to be notified of iconification events,
+     you should use a window listener or a window state listener.
+
+<li> Resize the window.
+     <br>
+     You'll see component-resized
+     (and possibly component-moved) events
+     from all four components &#151; label, check box, panel, and frame.
+     If the frame and panel's layout manager didn't make every component
+     as wide as possible,
+     the panel, label, and check box wouldn't have been resized.
+</ol>
+<hr></blockquote>
+
+<p>
+
+You can find the demo's code in 
+
+<a class="SourceLink" target="_blank" href="examples/ComponentEventDemo.java"><code>ComponentEventDemo.java</code></a>.
+Here is just the code related to handling component events:
+
+<blockquote><pre>
+public class ComponentEventDemo ... implements ComponentListener {
+    static JFrame frame;
+    JLabel label;
+    ...
+    public ComponentEventDemo() {
+        ...
+        JPanel panel = new JPanel(new BorderLayout());
+        label = new JLabel("This is a label", JLabel.CENTER);
+        label.addComponentListener(this);
+        panel.add(label, BorderLayout.CENTER);
+
+        JCheckBox checkbox = new JCheckBox("Label visible", true);
+        checkbox.addComponentListener(this);
+        panel.add(checkbox, BorderLayout.PAGE_END);
+        panel.addComponentListener(this);
+        ...
+        frame.addComponentListener(this);
+    }
+    ...
+    public void componentHidden(ComponentEvent e) {
+	displayMessage("componentHidden event from "
+		       + e.getComponent().getClass().getName());
+    }
+
+    public void componentMoved(ComponentEvent e) {
+        Component c = e.getComponent();
+        displayMessage("componentMoved event from "
+                       + c.getClass().getName()
+                       + "; new location: "
+                       + c.getLocation().x
+                       + ", "
+                       + c.getLocation().y);
+    }
+
+    public void componentResized(ComponentEvent e) {
+        Component c = e.getComponent();
+        displayMessage("componentResized event from "
+                       + c.getClass().getName()
+                       + "; new size: "
+                       + c.getSize().width
+                       + ", "
+                       + c.getSize().height);
+    }
+
+    public void componentShown(ComponentEvent e) {
+	displayMessage("componentShown event from "
+		       + e.getComponent().getClass().getName());
+    }
+
+    public static void main(String[] args) {
+        ...
+        //Create and set up the window.
+        frame = new JFrame("ComponentEventDemo");
+        ...
+        JComponent newContentPane = new ComponentEventDemo();
+        frame.setContentPane(newContentPane);
+        ...
+    }
+}
+</pre></blockquote>
+
+</blockquote>
+<h3>
+<a name="api">The Component Listener API</a>
+</h3>
+<blockquote>
+
+<p align=center><a name="componentlistener">The ComponentListener
+   Interface</a>
+<p><em>All of these methods are also in the adapter class,
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/event/ComponentAdapter.html"><code>ComponentAdapter</code></a>.</em>
+<table border=1>
+<tr>
+<th align=left>Method</th>
+<th align=left>Purpose</th>
+</tr>
+
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/event/ComponentListener.html#componentHidden(java.awt.event.ComponentEvent)">componentHidden(ComponentEvent)</a></td>
+<td> Called after the listened-to component is hidden
+     as the result of the <code>setVisible</code> method being called.
+</td>
+</tr>
+
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/event/ComponentListener.html#componentMoved(java.awt.event.ComponentEvent)">componentMoved(ComponentEvent)</a></td>
+<td> Called after the listened-to component moves,
+     relative to its container.
+     For example, if a window is moved,
+     the window fires a component-moved event,
+     but the components it contains do not.
+</td>
+</tr>
+
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/event/ComponentListener.html#componentResized(java.awt.event.ComponentEvent)">componentResized(ComponentEvent)</a></td>
+<td> Called after the listened-to component's
+     size (rectangular bounds) changes.
+</td>
+</tr>
+
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/event/ComponentListener.html#componentShown(java.awt.event.ComponentEvent)">componentShown(ComponentEvent)</a></td>
+<td> Called after the listened-to component becomes visible
+     as the result of the <code>setVisible</code> method being called.
+</td>
+</tr>
+</table>
+
+<p align=center><a name="componentevent">The ComponentEvent
+   Class</a>
+<p>
+<table border=1>
+<tr>
+<th align=left>Method</th>
+<th align=left>Purpose</th>
+</tr>
+<tr>
+<td>
+<a class="APILink" target="_blank" href="http://java.sun.com/javase/6/docs/api/java/awt/event/ComponentEvent.html#getComponent()">Component getComponent()</a></td>
+<td> Returns the component that fired the event.
+     You can use this instead of the <code>getSource</code> method.
+</td>
+</tr>
+</table>
+
+</blockquote>
+
+<a name="eg">
+<h3>Examples that Use Component Listeners</h3>
+</a>
+<blockquote>
+The following table lists the
+examples that use component listeners.
+ 
+<p>
+ 
+<table>
+<tr>
+<th align=left> Example
+</th>
+<th align=left> Where Described
+</th>
+<th align=left> Notes
+
+</th>
+</tr>
+<tr valign=top>
+<td> <a href="examples/index.html#ComponentEventDemo"><code>ComponentEventDemo</code></a>
+</td>
+<td> This section
+</td>
+<td> Reports all component events that occur on several components
+     to demonstrate the circumstances under which component events are fired.
+
+</td>
+</tr>
+</table>
+        </blockquote>
+        <div class=NavBit>
+            <a target=_top href=changelistener.html>&laquo; Previous</a>
+            &bull;
+            <a target=_top href=../TOC.html>Trail</a>
+            &bull;
+            <a target=_top href=containerlistener.html>Next &raquo;</a>
+        </div>
+    </div>
+    <div id=Footer>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../information/copyright.html">Copyright</a>
+    1995-2006 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    <div class=PrintHeaders>
+        <b>Previous page:</b> How to Write a Change Listener
+        <br><b>Next page:</b> How to Write a Container Listener
+    </div>
+    </body>
+</html> 

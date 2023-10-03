@@ -1,0 +1,29 @@
+The location of .jnlp files is defined in index.mem4 thusly:
+
+#define JNLPBASE http://java.sun.com/docs/books/javatutorial/onlineonly/JWS/uiswing/components/example-1dot4
+#definemacro JNLPLINK <a href="$JNLPBASE/$DEMO_NAME.jnlp">$DEMO_NAME</a>
+
+For conversion notes, see ../NOTYETexample-1dot4/README.
+
+PROBLEMS
+--------
+DialogDemo has too many inner classes.  Non-auto-closing dialog
+doesn't use the L&F decorations.  Non-modal dialog takes too long
+to open -- should be prepared in background.  Also see conversion
+notes in NOTYETexample-1dot4/README.
+
+FileChooserDemo isn't signed and thus can't be launched with JWS.
+Is this OK?
+
+JWSFileChooserDemo uses 2 deprecated APIs -- setNextFocusableComponent
+& StringBufferInputStream.  Also, it can overwrite existing files.
+Scary!!
+
+TumbleItem:  I forgot the "/" before the ">" on the param tags, which
+caused all but the first to be ignored (null).  
+
+General: JWS caches the .jnlp files and doesn't seem to check whether
+they're updated.  To get a jnlp file reread, I had to remove the application
+from JWS (Application > Remove) and then try the link in the browser
+again.
+To get a new .jnlp file

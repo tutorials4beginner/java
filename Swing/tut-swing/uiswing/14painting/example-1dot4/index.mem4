@@ -1,0 +1,110 @@
+#define TOP ../../..
+#define TRAILPATH ../..
+#define IMAGEPATH $TOP/images
+#define LESSONHEAD ../index.html
+#define LESSONDIR 14painting
+#define TRAILDIR uiswing
+#define LESSONTITLE Performing Custom Painting
+#define TRAILHEAD $TRAILPATH/index.html
+#define TRAILTITLE Creating a GUI with JFC/Swing
+#include $TRAILPATH/traildefs.mem4
+#include $TOP/bookdefs.mem4
+#define PAGETITLE $LESSONTITLE: Examples (1.4)
+#define PREVIOUSFILE $TRAILPATH/events/example-1dot4/index.html
+#define NEXTFILE $TRAILPATH/end.html
+#include $STDPATH/header.mem4
+
+#define JNLPBASE http://java.sun.com/docs/books/tutorialJWS/uiswing/14painting/example-1dot4
+
+#define MOSTLYAPPLICATIONS 
+#include $TRAILPATH/14exampleinclude.mem4
+
+
+</blockquote>
+<h4>Compiling and Running the Examples Locally</h4>
+<blockquote>
+
+#include $TRAILPATH/14exampleappnote.mem4
+
+#include $TRAILPATH/requiredegfiles.mem4
+
+<p>
+You can find out which files each example needs by consulting the
+following table or by looking at the comments at the beginning of
+each source file.
+</blockquote>
+
+<a name=table><h4>Table of Examples</h4></a>
+
+<table border="1">
+
+<tr>
+<td><strong>Example</strong></td>
+<td><strong>Source Files</strong></td>
+<td><strong>Image & Other Files</strong></td>
+<td><strong>Where Described</strong></td>
+</tr>
+
+<tr>
+<td><a name="CoordinatesDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME CoordinatesDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE CoordinatesDemo.java
+    LINKTEXT CoordinatesDemo.java
+)
+    </a></td>
+<td>&nbsp;
+<td><a href="../concepts2.html">
+    Introduction to Painting Concepts</a></td>
+</tr>
+
+<tr>
+<td><a name="IconDisplayer">
+#usemacro JNLPLINK (
+    DEMO_NAME IconDisplayer
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE IconDisplayer.java
+    LINKTEXT IconDisplayer.java
+)
+
+    </a></td>
+<td><a href="images/rocketship.gif"><code>rocketship.gif</code></a>
+</td>
+<td><a href="../practice.html">
+    Implementing a Custom Component</a></td>
+</tr>
+
+<tr>
+<td><a name="SelectionDemo">
+#usemacro JNLPLINK (
+    DEMO_NAME SelectionDemo
+)
+
+<td>
+    
+#usemacro SOURCELINK (
+    LINKFILE SelectionDemo.java
+    LINKTEXT SelectionDemo.java
+)
+
+    </a></td>
+<td><a href="images/starfield.gif"><code>starfield.gif</code></a>
+</td>
+<td><a href="../concepts2.html">
+    Introduction to Painting Concepts</a></td>
+</tr>
+
+</table>
+
+</font>
+
+#include $STDPATH/footer.mem4

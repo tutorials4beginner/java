@@ -1,0 +1,588 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+    <head>
+        <title>Implementing a Custom Component (The Java&trade; Tutorials &gt; 
+            Creating a GUI with JFC/Swing &gt; Performing Custom Painting)
+</title>
+<style type="text/css">
+    .FigureCaption   { 
+        margin-left: 1in; 
+        margin-right: 1in; 
+        font-family: sans-serif; 
+        font-size: smaller; 
+        text-align: justify;
+    }
+    #TopBar_bl {
+        background: url(../../images/java_bar_bl.gif) 0 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_br {
+        background: url(../../images/java_bar_br.gif) 100% 100% no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tl {
+        background: url(../../images/java_bar_tl.gif) 0 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar_tr {
+        background: url(../../images/java_bar_tr.gif) 100% 0 no-repeat;
+        width: 100%;
+        height: 60px;
+    }
+    #TopBar {
+        background: #35556B url(../../images/java_bar.gif);
+        margin: 10px 10px 0 10px;
+        height:60px;
+        min-width:700px;
+        color: white;
+        font-family: sans-serif; 
+        font-weight: bold;
+    }
+    @media print {
+        #BreadCrumbs, #Download {
+            display: none;
+        }
+    }
+    #TopBar_right {
+        line-height: 14px;
+        float: right;
+        padding-top: 2px;
+        padding-right: 30px;
+        text-align: center;
+    }
+    @media print {
+        #TopBar_right {
+            display: none;
+        }
+    }
+    #TopBar_right a {
+        font-size: 12px;
+        margin: 3px;
+        padding: 0;
+    }
+    #TopBar a:visited, #TopBar a:link {
+        color: white;
+        text-decoration: none;
+    }
+    #TopBar a:hover, #TopBar a:active  {
+        background-color: white;
+        color: #35556B;
+    }
+    #BreadCrumbs {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+        float: right;
+    }
+    #BreadCrumbs a {
+        color: blue;
+    }
+    #BreadCrumbs a:visited, #BreadCrumbs a:link {
+        text-decoration: none;
+    }
+    #BreadCrumbs a:hover, #BreadCrumbs a:active {
+        text-decoration: underline;
+    }
+    #PageTitle {
+        margin: 0 5px 0.5em 0;
+        color: #E76F00;
+        font-family: sans-serif; 
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .LeftBar_shown {
+        width: 13em;
+        float: left;
+        margin-left: 10px;
+        margin-top: 4px;
+        margin-bottom: 2em;
+    }
+    @media print {
+        .LeftBar_shown {
+            display: none;
+        }
+    }
+    .LeftBar_hidden {
+        display: none;
+    }
+    #Footer {
+        padding-top: 10px;
+        padding-left: 10px;
+        margin-right: 10px;
+    }
+    .NavBit  {
+        padding: 4px 5px 0.5em 0;
+        font-family: sans-serif; 
+    }
+    @media print {
+        .NavBit {
+            display: none;
+        }
+    }
+    #TagNotes {
+        text-align: right;
+        font-size: smaller;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #TagNotes a:visited, #TagNotes a:link {
+            color: #35556B;
+            text-decoration: none;
+        }
+    }
+    #Contents a, .NavBit a, #TagNotes a {
+        color: blue
+    }
+    #TagNotes a:visited, #TagNotes a:link,
+    #Contents a:visited, #Contents a:link,
+    .NavBit a:visited, .NavBit a:link {
+        text-decoration: none;
+    }
+    #TagNotes a:hover, #TagNotes a:active,   
+    #Contents a:hover, #Contents a:active,   
+    .NavBit a:hover, .NavBit a:active {  
+        text-decoration: underline;
+    }
+    #Contents {
+        float: left;
+        font-family: sans-serif; 
+    }
+    @media print {
+        #Contents {
+            display: none;
+        }
+    }
+    @media screen {
+        div.PrintHeaders {
+            display: none;
+        }
+    }
+    .linkLESSON, .nolinkLESSON {
+        margin-left: 0.5em;
+        text-indent: -0.5em
+    }
+    .linkAHEAD, .nolinkAHEAD, .linkQUESTIONS, .nolinkQUESTIONS   {
+        margin-left: 1.5em; 
+        text-indent: -0.5em
+    }
+    .linkBHEAD, .nolinkBHEAD   {
+        margin-left: 2.5em;
+        text-indent: -0.5em
+    }
+    .linkCHEAD, .nolinkCHEAD   {
+        margin-left: 3.5em;
+        text-indent: -0.5em
+    }
+    .nolinkLESSON, .nolinkAHEAD, .nolinkBHEAD, .nolinkCHEAD,
+    .nolinkQUESTIONS {
+        font-weight: bold;
+        color: #E76F00;
+    }
+    .MainFlow_indented {
+        margin-right: 10px;
+        margin-left: 15em;
+        margin-bottom: 2em;
+
+    }
+    .MainFlow_wide {
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom: 2em;
+
+    }
+    @media print {
+        .MainFlow_indented, .MainFlow_wide {
+            padding-top: 0;
+            margin-top: 10px;
+            margin-right: 10px;
+            margin-left: 0;
+        }
+    }
+    h3, h4, h5 {
+        color: #E76F00;
+        font-family: sans-serif;
+    }
+    #ToggleLeft {
+        display: none;
+    }
+
+    /t
+
+</style>
+<script type="text/javascript">
+    function leftBar() {
+        var nameq = 'tutorial_showLeftBar='
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookieString = cookies[i];
+            while (cookieString.charAt(0) == ' ') {
+                cookieString = cookieString.substring(1, cookieString.length);
+            }
+            if (cookieString.indexOf(nameq) == 0) {
+                cookieValue =  cookieString.substring(nameq.length,
+                        cookieString.length);
+                return cookieValue == 'yes';
+            }
+        }
+        return true;
+    }
+
+    function showLeft(b) {
+        var contents = document.getElementById("LeftBar");
+        var main = document.getElementById("MainFlow");
+        var toggle = document.getElementById("ToggleLeft");
+        if (b) {
+            contents.className = "LeftBar_shown";
+            main.className = "MainFlow_indented";
+            toggle.innerHTML = "Hide the TOC";
+            document.cookie = 'tutorial_showLeftBar=yes; path=/';
+        } else {
+            contents.className = "LeftBar_hidden";
+            main.className = "MainFlow_wide";
+            toggle.innerHTML = "Show the TOC";
+            document.cookie = 'tutorial_showLeftBar=no; path=/';
+        }
+    }
+
+    function toggleLeft() {
+        showLeft(document.getElementById("LeftBar").className ==
+                "LeftBar_hidden");
+        document.getElementById("ToggleLeft").blur();
+    }
+
+    function load() {
+        showLeft(leftBar());
+        document.getElementById("ToggleLeft").style.display="inline";
+    }
+    
+</script>
+
+    </head>
+<body onload="load()">
+    <div id=TopBar> <div id=TopBar_tr> <div id=TopBar_tl> <div id=TopBar_br> <div id=TopBar_bl> 
+                        <div id=TopBar_right> 
+                            <a target="_blank"
+                                href="http://java.sun.com/javase/6/download.jsp">Download
+                                the JDK</a>
+                            <br>
+                            <a href="../../search.html" target="_blank">Search the
+                                Tutorials</a>
+                            <br>
+                            <a href="javascript:toggleLeft()"
+                                id="ToggleLeft">Hide the TOC</a>
+                        </div>
+                    </div> </div> </div> </div> </div>
+    <div class=PrintHeaders>
+        <b>Trail:</b> Creating a GUI with JFC/Swing
+        <br><b>Lesson:</b> Performing Custom Painting
+    </div>
+
+    <div id=LeftBar class=LeftBar_shown>
+        <div id=Contents>
+            <div class="linkLESSON"><a href="index.html">Performing Custom Painting</a></div>
+<div class="linkAHEAD"><a href="concepts.html">How Swing Components Are Displayed</a></div>
+<div class="linkAHEAD"><a href="concepts2.html">Introduction to Painting Concepts</a></div>
+<div class="nolinkAHEAD">Implementing a Custom Component</div>
+<div class="linkAHEAD"><a href="summary.html">Summary</a></div>
+<div class="linkAHEAD"><a href="problems.html">Solving Common Painting Problems</a></div>
+</div>
+    </div>
+    <div id=MainFlow class=MainFlow_indented>
+            <span id=BreadCrumbs>
+                <a href=../../index.html target=_top>Home Page</a>
+                &gt;
+                <a href=../index.html target=_top>Creating a GUI with JFC/Swing</a>
+                &gt;
+                <a href=index.html target=_top>Performing Custom Painting</a>
+            </span>
+            <div class=NavBit>
+                <a target=_top href=concepts2.html>&laquo;&nbsp;Previous</a>&nbsp;&bull;&nbsp;<a target=_top href=../TOC.html>Trail</a>&nbsp;&bull;&nbsp;<a target=_top href=summary.html>Next&nbsp;&raquo;</a>
+            </div>
+            <div id=PageTitle>Implementing a Custom Component</div>
+            <blockquote>
+Before you implement a component that performs custom painting,
+first make sure that you 
+really need to do so.
+You might be able to use the text and image
+capabilities of
+<a class="TutorialLink" target="_top" href="../components/label.html">labels</a>,
+<a class="TutorialLink" target="_top" href="../components/button.html">buttons</a>, or
+<a class="TutorialLink" target="_top" href="../components/text.html">text components</a> instead.
+And remember, you can sometimes use 
+<a class="TutorialLink" target="_top" href="../components/border.html">borders</a> to customize the outside edges
+of a component and 
+<a class="TutorialLink" target="_top" href="../components/icon.html">icons</a> to paint an area
+that perhaps varies by component state.
+If you need to make changes to many standard components,
+you should consider doing it by customizing a 
+<a class="TutorialLink" target="_top" href="../lookandfeel/plaf.html">look and feel</a> such as the GTK+ look and feel.
+
+<p>
+
+If you really need to perform custom painting,
+then you need to decide which superclass to use.
+Your component can extend <code>JComponent</code>,
+<code>JPanel</code>,
+or a more specialized Swing component class.
+
+<p>
+For example, if you're creating a custom button class,
+you should probably implement it by extending a button class
+such as 
+<code>JButton</code> or <code>JToggleButton</code>.
+That way you'll inherit the state management provided by those classes.
+If you're creating a component that 
+paints on top of an image,
+you might want to create a <code>JLabel</code> subclass.
+A component that's a specialized container
+should probably extend <code>JPanel</code>.
+On the other hand, if you're implementing a component
+that generates and displays a graph, for example &#151;
+with or without providing user interaction &#151;
+then you might want to use a 
+<code>JComponent</code> subclass.
+
+<p>
+When implementing custom painting code
+for a component,
+keep these rules in mind:
+
+<ul>
+<li> Your custom painting code should be in a method with the
+     signature <code>protected void paintComponent(Graphics)</code>.
+<li> You can &#151; and probably should &#151; use a border
+     to paint the outside edges
+     of your component.
+<li> Except when painting the background of the component,
+     you should avoid painting over the border area of the
+     component.
+     You can determine this area 
+     using the <code>getInsets</code> method.
+<li> Your component must honor the <em>opaque</em> property.
+     If your component is opaque,
+     it must paint its complete area
+     using an opaque color or colors.
+     If its <em>opaque</em> property is false,
+     then you have the option of not painting over the entire component.
+<li> Make sure that when the <code>paintComponent</code> method exits,
+     the <code>Graphics</code> object that was passed into it
+     has the same state that it had
+     at the start of the method.
+<li> To gain access to the power of the 
+<a class="TutorialLink" target="_top" href="../../2d/index.html">2D graphics API</a>,
+     you can cast the <code>Graphics</code> parameter
+     into a <code>Graphics2D</code> object.
+</ul>
+
+<p>
+Besides those painting-related considerations,
+here are a few more rules to keep in mind:
+<ul>
+<li> Your component should return reasonable size information.
+     Specifically, you should either override the
+     <code>getMinimumSize</code>, <code>getPreferredSize</code>,
+     and <code>getMaximumSize</code> methods
+     or make sure that your component's superclass
+     supplies values that are appropriate.
+<li> Your component should be as accessible as possible.
+     For details, see
+<a class="TutorialLink" target="_top" href="../misc/access.html#accessiblecomponents">Making Custom Components Accessible</a>.
+<li> You should separate out strings and resources
+     such as images
+     so that your component can be easily localized.
+     More information is in
+<a class="TutorialLink" target="_top" href="../../i18n/index.html">Internationalization</a>.
+
+</blockquote>
+<h3>
+An Example of Custom Painting
+</h3>
+<blockquote>
+
+The following application gives an example of custom painting.
+It features a custom component called
+<code>IconDisplayer</code>
+that paints an icon multiple times,
+with all but the rightmost icon transparent.
+
+<p><center><IMG SRC="../../figures/uiswing/painting/IconDisplayer.gif" WIDTH="465" HEIGHT="105" ALIGN="BOTTOM" ALT="4 faded rocket ships follow Duke's rocket ship"></center></p>
+You can
+<b><a href=http://java.sun.com/docs/books/tutorialJWS/uiswing/painting/examples/IconDisplayer.jnlp>run the IconDisplayer
+application</a></b>
+using 
+<a class="TutorialLink" target="_top" href="../../information/javawebstart.html">Java<sup><font size=-2>TM</font></sup> Web Start</a>.    Or, to compile and run the example yourself,
+     consult the
+     <a href="examples/index.html#IconDisplayer">example index</a>.
+
+<p>
+The source code is in 
+<a class="SourceLink" target="_blank" href="examples/IconDisplayer.java"><code>IconDisplayer.java</code></a>.
+Here are the main painting-related parts:
+
+<blockquote><pre>
+public class IconDisplayer extends JComponent {
+    ...
+    protected void paintComponent(Graphics g) {
+        if (isOpaque()) { //paint background
+            g.setColor(getBackground());
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }
+
+        if (icon != null) {
+            ...
+            Graphics2D g2d = (Graphics2D)g.create();
+
+            while (<em>/* we're not done */</em>) {
+                <em>/* Paint an icon. */</em>
+            }
+            g2d.dispose(); //clean up
+        }
+    }
+    ...
+}
+</pre></blockquote>
+
+<p>
+The first thing the <code>paintComponent</code> method does is check
+whether the <code>IconDisplayer</code> needs to be opaque and,
+if so, paint its background.
+If <code>IconDisplayer</code> were
+a subclass of something other than <code>JComponent</code>,
+we might omit this code
+and just call <code>super.paintComponent</code>.
+
+<p>
+The second part of the <code>paintComponent</code> method
+paints the main part of the component.
+It creates a copy of the <code>Graphics</code> object
+it was handed
+and casts it 
+into a <code>Graphics2D</code> object.
+The typecast lets <code>paintComponent</code> use 
+2D features such as alpha compositing;
+the copy lets it avoid 
+making changes to the passed-in <code>Graphics</code> object,
+which would have to be undone before returning.
+
+<p>
+Here's a complete listing of the code that paints the icon repeatedly:
+
+<blockquote><pre>
+if (icon != null) {
+    Insets insets = getInsets();
+    int iconWidth = icon.getIconWidth();
+    int iconX = getWidth() - insets.right
+                           - iconWidth;
+    int iconY = insets.top;
+    boolean faded = false;
+    
+    Graphics2D g2d = (Graphics2D)g.create();
+
+    g.getClipBounds(clipRect);
+    while (iconX >= insets.left) {
+	iconRect.setBounds(iconX, iconY, iconWidth,
+			   icon.getIconHeight());
+	if (iconRect.intersects(clipRect)) {
+            icon.paintIcon(this, g2d, iconX, iconY);
+	}
+        iconX -= (iconWidth + pad);
+        if (!faded) { 
+            g2d.setComposite(AlphaComposite.getInstance(
+                AlphaComposite.SRC_OVER, 0.1f));
+            faded = true;
+        }
+    }
+    g2d.dispose(); //clean up
+}
+</pre></blockquote>
+
+<p>
+The first thing the code does is prepare for painting icons.
+It gets its border size, using the <code>getInsets</code> method.
+It then uses the insets,
+along with the component and icon sizes,
+when calculating where the first icon &#151;
+the rightmost one &#151;
+should be painted.
+The icon is an <code>ImageIcon</code>,
+so it's easy to get its size using methods
+such as <code>getIconWidth</code>,
+and it can paint itself using the <code>Icon</code>-defined
+method <code>paintIcon</code>.
+The code next gets a <code>Graphics2D</code> object
+so that it can use alpha compositing when painting 
+some of the icons.
+
+<p>
+Next comes a bit of performance tuning.
+The code gets the <em>clipping area</em>, 
+using the <code>Graphics</code> method
+<code>getClipBounds</code>.
+The clipping area is the part of the component
+that needs to be repainted.
+For example, 
+if a window covering the right half of the component goes away,
+then only the right half of the component needs to be repainted.
+After getting the clipping area,
+the code checks whether this clipping area 
+intersects with the icon's current painting area.
+If so, it paints the icon.
+If not, it saves a little time by not painting the icon.
+
+<p>
+After dealing with the first (rightmost) occurrence of the icon, 
+the code invokes <code>setComposite</code>
+on the <code>Graphics2D</code> object,
+specifying parameters that make the subsequently painted icons
+appear to be only 10% opaque.
+You can find information on using alpha compositing in
+<a class="TutorialLink" target="_top" href="../../2d/advanced/compositing.html">Compositing Graphics</a>,
+a section in the
+<a class="TutorialLink" target="_top" href="../../2d/index.html">2D Graphics</a> trail.
+
+<p>
+
+After the <code>paintComponent</code> method
+paints all the icons, 
+there's nothing for it to do but clean up.
+In this case,
+the cleanup is as simple as
+disposing of the <code>Graphics2D</code> object
+the method created.
+        </blockquote>
+        <div class=NavBit>
+            <a target=_top href=concepts2.html>&laquo; Previous</a>
+            &bull;
+            <a target=_top href=../TOC.html>Trail</a>
+            &bull;
+            <a target=_top href=summary.html>Next &raquo;</a>
+        </div>
+    </div>
+    <div id=Footer>
+<div id=TagNotes>
+    Problems with the examples? Try <a target="_blank"
+        href=../../information/run-examples.html>Compiling and Running
+        the Examples: FAQs</a>.
+    <br>
+    Complaints? Compliments? Suggestions? <a target="_blank"
+        href="http://developer.sun.com/contact/tutorial_feedback.jsp">Give
+    us your feedback</a>.
+<br><br>
+    <a target="_blank" href="../../information/copyright.html">Copyright</a>
+    1995-2006 Sun Microsystems, Inc.  All rights reserved.
+    <span id=Download>
+</span></div> 
+
+    </div>
+    <div class=PrintHeaders>
+        <b>Previous page:</b> Introduction to Painting Concepts
+        <br><b>Next page:</b> Summary
+    </div>
+    </body>
+</html> 

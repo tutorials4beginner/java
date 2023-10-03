@@ -1,0 +1,101 @@
+#define TOP ../../..
+#define TRAILPATH ../..
+#define IMAGEPATH $TOP/images
+#define LESSONHEAD ../index.html
+#define LESSONDIR 14start
+#define LESSONTITLE Getting Started with Swing
+#define TRAILHEAD $TRAILPATH/index.html
+#define TRAILTITLE Creating a GUI with JFC/Swing
+#include $TRAILPATH/traildefs.mem4
+#include $TOP/bookdefs.mem4
+#define PAGETITLE $LESSONTITLE: Examples (5.0)
+#define PREVIOUSFILE $TRAILPATH/examples.html
+#define NEXTFILE $TRAILPATH/learn/example-1dot4/index.html
+#include $STDPATH/header.mem4
+
+#define JNLPBASE http://java.sun.com/docs/books/tutorialJWS/uiswing/14start/ex5
+
+#define MOSTLYAPPLICATIONS
+#include $TRAILPATH/50exampleinclude.mem4
+
+<p>
+#include $TRAILPATH/requiredegfiles.mem4
+
+<p>
+
+<a name="table">
+<table border="1">
+
+<tr>
+<td><strong>Example</td>
+<td><strong>Source Files</td>
+<td><strong>Image & Other Files</strong></td>
+<td><strong>Where Described</td>
+</tr>
+
+<tr>
+<td><a name="HelloWorldSwing">
+HelloWorldSwing
+</a>
+</td>
+    
+<td>
+#usemacro SOURCELINK (
+    LINKFILE HelloWorldSwing.java
+    LINKTEXT HelloWorldSwing.java
+)
+</a></td>
+<td>&nbsp;
+<td><a href="../compile.html">
+    Compiling and Running Swing Programs</a></td>
+</tr>
+
+<tr>
+<td><a name="HelloJWS">
+#usemacro JNLPLINK (
+    DEMO_NAME HelloJWS
+)
+</a>
+</td>
+    
+<td>
+#usemacro SOURCELINK (
+    LINKFILE HelloJWS.java
+    LINKTEXT HelloJWS.java
+)
+</td>
+
+<td>&nbsp;
+<td><a href="../compile.html">
+    Compiling and Running Swing Programs</a></td>
+</tr>
+
+</table>
+</a>
+
+#include $STDPATH/footer.mem4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,61 @@
+h03272
+s 00032/00001/00001
+d D 1.2 98/10/30 19:29:55 maryd 3 1
+c Replaced single-line text with longer sample contract.
+e
+s 00000/00000/00000
+d R 1.2 98/08/06 23:19:25 Codemgr 2 1
+c SunPro Code Manager data about conflicts, renames, etc...
+c Name history : 3 2 security/toolfilex/examples/contract
+c Name history : 2 1 security/toolfilex/example-1dot2/contract
+c Name history : 1 0 security1.2/toolfilex/example-1dot2/contract
+e
+s 00002/00000/00000
+d D 1.1 98/08/06 23:19:24 maryd 1 0
+c date and time created 98/08/06 23:19:24 by maryd
+e
+u
+U
+f e 0
+t
+T
+I 1
+D 3
+This is meant to be a sample contract file.
+E 3
+I 3
+                                   CONSULTING AGREEMENT
+
+This agreement is entered into as of October 30, 1998 by and between ABC, Inc. 
+(hereinafter "ABC")  and Ruth Reynolds (hereinafter "Consultant").
+
+ABC desires to engage Consultant to deliver assistance (hereinafter referred to as 
+"Services") on matters relating to ABC's business, and Consultant desires to 
+provide such Services. It is therefore agreed as follows:
+
+1. The Services
+
+Consultant shall provide the following services:
+
+    Write complete end-user documentation on the use of product XYZ. Provide 
+the documentation in HTML for incorporation into ABC's web site.
+
+2. Term of Agreement
+
+This agreement shall be effective from October 30, 1998 through March 15, 1999.
+
+3. Compensation and Collection
+
+(A) ABC agrees to lend Consultant the hardware and software necessary to 
+perform the Services.
+
+(B) ABC agrees to pay $40,000 for performance of the Services.
+
+4. Company Contact
+
+The ABC representative for this project is Stan Smith, publishing director.
+
+
+E 3
+
+E 1
